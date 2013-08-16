@@ -49,7 +49,9 @@
 
 -(UIButton*)choiceButton:(int)i{
 	
-	UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+	UIButton *button = [[UIButton alloc] init];
+	
+//	UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
 	[button addTarget:self action:NSSelectorFromString(@"gameChoiceSelected:") forControlEvents:UIControlEventTouchDown];
 	button.tag = i;
 	button.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:14];
@@ -75,6 +77,13 @@
 	
 	return button;
 	
+}
+
+-(CALayer*)bottomBorder{
+	CALayer *bottomBorder = [CALayer layer];
+	bottomBorder.frame = CGRectMake(0, screenButtonHeight-(screenButtonHeight/10), screenButtonWidth, screenButtonHeight/10);
+	bottomBorder.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2].CGColor;
+	return bottomBorder;
 }
 
 

@@ -34,26 +34,24 @@
 -(void)start {
 	[self lessonStart];
 	[self templateStart];
-	
+
 	[self userStart];
 	[self gameStart];
 }
 
+# pragma mark Game States -
 
 -(void)gameStart {
 	
-	NSLog(@"> Game | Start");
+	NSLog(@"- Game | Start");
 	
-//	userLesson = [lesson nextLesson];
-	
-	NSLog(@"> Game | Start Lesson %d",userLesson);
-	
+	[self gameChoicesRemove];
 	[self gamePrepare];
 }
 
 -(void)gamePrepare {
 	
-	NSLog(@"> Game | Prepare");
+	NSLog(@"- Game | Prepare");
 	
 	[self gameChoicesGenerate];
 	[self gameReady];
@@ -64,14 +62,14 @@
 	
 	self.lessonEnglishLabel.text = gameLessonsArray[userLesson][0];
 	
-	NSLog(@"> Game | Ready");
+	NSLog(@"- Game | Ready");
 	
 	[self templateReadyAnimate];
 	
 }
 
 -(void)gamePlay {
-	NSLog(@"> Game | Play");
+	NSLog(@"- Game | Play");
 	
 }
 
@@ -80,8 +78,88 @@
 	
 }
 
+# pragma mark Choices -
+
+-(void)gameChoicesGenerate
+{
+	
+	for (UIView *subview in [self.choicesView subviews]) {
+		[subview removeFromSuperview];
+	}
+	
+	choiceSolution = (arc4random() % 6);
+	NSString *choiceSolutionString = gameLessonsArray[userLesson][1];
+	NSLog(@"> Less | Solution %d %@",choiceSolution, choiceSolutionString);
+	
+	for(int i = 0; i < 6; i++){
+		
+		UIButton *button = [[UIButton alloc] init];
+		
+		[button addTarget:self action:NSSelectorFromString(@"gameChoiceSelected:") forControlEvents:UIControlEventTouchDown];
+		
+		button.frame = [template choiceButton:i].frame;
+		button.tag = [template choiceButton:i].tag;
+		button.titleLabel.font = [template choiceButton:i].titleLabel.font;
+		button.titleLabel.textColor = [template choiceButton:i].titleLabel.textColor;
+		button.contentEdgeInsets = [template choiceButton:i].contentEdgeInsets;
+		button.alpha = 0;
+			
+		[button.layer addSublayer:[template bottomBorder]];
+		
+		[button setTitle: [lesson lessonContent][i][1] forState: UIControlStateNormal];
+		
+		[button setBackgroundColor:[UIColor redColor]];
+		
+		if(i == choiceSolution){
+			[button setTitle:choiceSolutionString forState:UIControlStateNormal];
+		}
+		
+		[self.choicesView addSubview:button];
+	}
+}
+
+-(void)gameChoicesRemove {
+	NSLog(@"> Game | Choice Remove");
+	
+	for (UIView *subview in [self.choicesView subviews]) {
+		[subview removeFromSuperview];
+	}
+}
+
+-(void)gameChoiceCorrect {
+	NSLog(@"> Game | Choice Correct");
+	
+//	for (UIView *subview in [self.choicesView subviews]) {
+//		[subview removeFromSuperview];
+//	}
+	
+	NSLog(@"TEST %@",[self.view subviews]);
+	
+}
+
+-(void)gameChoiceIncorrect {
+	NSLog(@"> Game | Choice Incorrect");
+	
+}
 
 
+-(void)gameChoiceSelected:(id)sender {
+	
+	int choiceId = ((UIView*)sender).tag;
+	
+	if(choiceId == choiceSolution){
+		[self gameChoiceCorrect];	
+	}
+	else{
+		[self gameChoiceIncorrect];
+	}
+	
+	[self gameStart];
+	
+	NSLog(@"Choice %d",choiceId);
+}
+
+# pragma mark To clean -
 
 -(void)templateReadyAnimate {
 	NSLog(@"> Anim | Ready");
@@ -110,26 +188,15 @@
 	
 }
 
-
-
-
-
-
-
 -(void)userStart {
 	NSLog(@"> User | Created");
 	userLesson = 30;
 }
 
-
-
-
-
-
 -(void)lessonStart {
-	
+	NSLog(@"> Less | Start");
 	lesson = [[Lesson alloc] init];
-	NSLog(@"%@",[lesson lessonContent]);
+	gameLessonsArray = [lesson lessonContent];
 }
 
 -(void)templateStart {
@@ -164,65 +231,5 @@
 	self.choicesView.backgroundColor = [UIColor blackColor];
 	
 }
-
-
--(void)gameChoicesGenerate
-{
-	
-	for (UIView *subview in [self.choicesView subviews]) {
-		[subview removeFromSuperview];
-	}
-	
-	choiceSolution = (arc4random() % 6);
-	NSString *choiceSolutionString = gameLessonsArray[userLesson][1];
-	NSLog(@"Solution: %d %d %@",userLesson, choiceSolution, choiceSolutionString);
-	
-	for(int i = 0; i < 6; i++){
-		UIButton *button = [template choiceButton:i];
-		// Overwrite name
-		[button setTitle: [lesson lessonContent][i][1] forState: UIControlStateNormal];
-		// Overwrite colour
-		[button setBackgroundColor:[UIColor redColor]];
-		// Overwrite name
-		if(i == choiceSolution){
-			[button setTitle:choiceSolutionString forState:UIControlStateNormal];
-		}
-		
-		[self.choicesView addSubview:button];
-	}
-	
-}
-
-
--(void)gameChoiceCorrect {
-	
-}
-
--(void)gameChoiceIncorrect {
-	
-}
-
-
--(void)gameChoiceSelected :(id)sender {
-	
-	int choiceId = ((UIView*)sender).tag;
-	
-	if(choiceId == choiceSolution){
-		[self gameChoiceCorrect];	
-	}
-	else{
-		[self gameChoiceIncorrect];
-	}
-	
-	NSLog(@"%d",choiceId);
-}
-
-
--(void)test {
-	NSLog(@"!!");
-}
-
-
-
 
 @end
