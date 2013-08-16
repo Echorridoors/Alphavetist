@@ -41,6 +41,7 @@ AVAudioPlayer *audioPlayerSounds;
 	[self templateStart];
 
 	[self userStart];
+	[self userLoad];
 	[self gameStart];
 }
 
@@ -151,6 +152,8 @@ AVAudioPlayer *audioPlayerSounds;
 	else{
 		userLesson += 1;
 	}
+	
+	[self userSave];
 	
 	[self templateChoiceCorrectAnimation];
 	
@@ -354,7 +357,7 @@ AVAudioPlayer *audioPlayerSounds;
 	self.lessonProgressView.frame = CGRectMake(screenMargin+screenButtonWidth, screenMargin*3, screenButtonWidth, screenMargin/2);
 	self.lessonProgressView.backgroundColor = [UIColor whiteColor];
 	
-	self.lessonProgressBar.frame = CGRectMake(3, 3, screenButtonWidth-6, (screenMargin/2) -6 );
+	self.lessonProgressBar.frame = CGRectMake(3, 3, 0, (screenMargin/2) -6 );
 	self.lessonProgressBar.backgroundColor = [UIColor blackColor];
 	
 	self.lessonTypeLabel.textColor = [UIColor whiteColor];
@@ -405,5 +408,32 @@ AVAudioPlayer *audioPlayerSounds;
 		[audioPlayerSounds play];
 	}
 }
+
+
+
+-(void)userLoad{
+	
+	if( [[[NSUserDefaults standardUserDefaults] objectForKey:@"userLesson"] intValue] > 0 ){
+		
+		NSLog(@"= User  | Loading..");
+		
+		userLessonComplete	= [[[NSUserDefaults standardUserDefaults] objectForKey:@"userLessonComplete"] intValue];
+		userLesson	= [[[NSUserDefaults standardUserDefaults] objectForKey:@"userLesson"] intValue];
+		
+		NSLog(@"= User  | Loaded.");
+	}
+}
+
+-(void)userSave{
+	
+	NSLog(@"= User  | Saving..");
+	
+	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:userLessonComplete] forKey:@"userLessonComplete"];
+	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:userLesson] forKey:@"userLesson"];
+	[[NSUserDefaults standardUserDefaults] synchronize];
+	
+	NSLog(@"= User  | Saved.");
+}
+
 
 @end

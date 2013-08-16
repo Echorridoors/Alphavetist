@@ -14,6 +14,10 @@
 		0355C36917BE1A7A00F71C39 /* fx.accepted.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0355C36617BE1A7A00F71C39 /* fx.accepted.wav */; };
 		0355C36A17BE1A7A00F71C39 /* fx.click.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0355C36717BE1A7A00F71C39 /* fx.click.wav */; };
 		0355C36B17BE1A7A00F71C39 /* fx.error.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0355C36817BE1A7A00F71C39 /* fx.error.wav */; };
+		0355C37017BE1D6F00F71C39 /* icon.57.png in Resources */ = {isa = PBXBuildFile; fileRef = 0355C36C17BE1D6F00F71C39 /* icon.57.png */; };
+		0355C37117BE1D6F00F71C39 /* icon.72.png in Resources */ = {isa = PBXBuildFile; fileRef = 0355C36D17BE1D6F00F71C39 /* icon.72.png */; };
+		0355C37217BE1D6F00F71C39 /* icon.114.png in Resources */ = {isa = PBXBuildFile; fileRef = 0355C36E17BE1D6F00F71C39 /* icon.114.png */; };
+		0355C37317BE1D6F00F71C39 /* icon.144.png in Resources */ = {isa = PBXBuildFile; fileRef = 0355C36F17BE1D6F00F71C39 /* icon.144.png */; };
 		03D07C9117BD085100DE4475 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D07C9017BD085100DE4475 /* UIKit.framework */; };
 		03D07C9317BD085100DE4475 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D07C9217BD085100DE4475 /* Foundation.framework */; };
 		03D07C9517BD085100DE4475 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D07C9417BD085100DE4475 /* CoreGraphics.framework */; };
@@ -37,6 +41,10 @@
 		0355C36617BE1A7A00F71C39 /* fx.accepted.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fx.accepted.wav; sourceTree = "<group>"; };
 		0355C36717BE1A7A00F71C39 /* fx.click.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fx.click.wav; sourceTree = "<group>"; };
 		0355C36817BE1A7A00F71C39 /* fx.error.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fx.error.wav; sourceTree = "<group>"; };
+		0355C36C17BE1D6F00F71C39 /* icon.57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.57.png; sourceTree = "<group>"; };
+		0355C36D17BE1D6F00F71C39 /* icon.72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.72.png; sourceTree = "<group>"; };
+		0355C36E17BE1D6F00F71C39 /* icon.114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.114.png; sourceTree = "<group>"; };
+		0355C36F17BE1D6F00F71C39 /* icon.144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.144.png; sourceTree = "<group>"; };
 		03D07C8D17BD085100DE4475 /* hahapapa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hahapapa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03D07C9017BD085100DE4475 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		03D07C9217BD085100DE4475 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -77,6 +85,10 @@
 		03D07C8417BD085100DE4475 = {
 			isa = PBXGroup;
 			children = (
+				0355C36C17BE1D6F00F71C39 /* icon.57.png */,
+				0355C36D17BE1D6F00F71C39 /* icon.72.png */,
+				0355C36E17BE1D6F00F71C39 /* icon.114.png */,
+				0355C36F17BE1D6F00F71C39 /* icon.144.png */,
 				0355C36417BE1A0100F71C39 /* AudioToolbox.framework */,
 				0355C36217BE19E500F71C39 /* AVFoundation.framework */,
 				0355C35D17BDC34500F71C39 /* QuartzCore.framework */,
@@ -198,6 +210,10 @@
 				0355C36917BE1A7A00F71C39 /* fx.accepted.wav in Resources */,
 				0355C36A17BE1A7A00F71C39 /* fx.click.wav in Resources */,
 				0355C36B17BE1A7A00F71C39 /* fx.error.wav in Resources */,
+				0355C37017BE1D6F00F71C39 /* icon.57.png in Resources */,
+				0355C37117BE1D6F00F71C39 /* icon.72.png in Resources */,
+				0355C37217BE1D6F00F71C39 /* icon.114.png in Resources */,
+				0355C37317BE1D6F00F71C39 /* icon.144.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,6 +266,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -265,6 +282,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -281,7 +300,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: David Mondou-Labbe";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: David Mondou-Labbe";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -289,6 +309,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "090CF236-E94B-4132-8B52-A114CEA8A5BC";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "090CF236-E94B-4132-8B52-A114CEA8A5BC";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -300,7 +322,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "hahapapa/hahapapa-Prefix.pch";
 				INFOPLIST_FILE = "hahapapa/hahapapa-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -311,7 +335,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "hahapapa/hahapapa-Prefix.pch";
 				INFOPLIST_FILE = "hahapapa/hahapapa-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
