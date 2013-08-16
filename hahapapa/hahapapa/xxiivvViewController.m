@@ -211,10 +211,13 @@
 }
 
 
-# pragma mark To clean -
+# pragma mark Animation -
 
 -(void)templateReadyAnimate {
 	NSLog(@"> Anim | Ready");
+	
+	float barMaxLesson = [gameLessonsArray count];
+	float barCurrentLesson = userLesson;
 	
 	self.lessonEnglishLabel.frame = CGRectMake(0, screenMargin, screen.size.width, screen.size.height/6);
 	self.lessonEnglishLabel.alpha = 0;
@@ -224,7 +227,10 @@
 	[UIView setAnimationDuration:0.5];
 	self.lessonEnglishLabel.frame = CGRectMake(0, screenMargin, screen.size.width, screen.size.height/6);
 	self.lessonEnglishLabel.alpha = 1;
+	self.lessonProgressBar.frame = CGRectMake(3, 3, (screenButtonWidth-6)*(barCurrentLesson/barMaxLesson), (screenMargin/2) -6 );
 	[UIView commitAnimations];
+	
+	NSLog(@"Progress %f", (screenButtonWidth-6)*(barCurrentLesson/barMaxLesson) );
 	
 	// Animate button fade
 	int i = 0;
@@ -238,10 +244,9 @@
 		i+=1;
 	}
 	
+	
+	
 }
-
-
-
 
 
 
