@@ -67,7 +67,6 @@ AVAudioPlayer *audioPlayerSounds;
 	
 	self.lessonEnglishLabel.text = gameLessonsArray[userLesson][0];
 	
-	
 	if(userLessonMode == 1 ){
 		self.lessonTypeLabel.text = @"ひらがな";
 	}
@@ -81,33 +80,23 @@ AVAudioPlayer *audioPlayerSounds;
 	
 }
 
--(void)gamePlay {
-	NSLog(@"- Game | Play");
-	
-}
-
--(void)gameFinished {
-	NSLog(@"> Game | Finished");
-	
-}
-
 # pragma mark Choices -
 
--(void)gameChoicesGenerate
-{
+-(void)gameChoicesGenerate {
 	
 	for (UIView *subview in [self.choicesView subviews]) {
 		[subview removeFromSuperview];
 	}
 	
 	// Create answer
+	
 	choiceSolution = (arc4random() % 6);
 	NSString *choiceSolutionString = gameLessonsArray[userLesson][userLessonMode];
 	NSLog(@"> Less | Solution %d %@",choiceSolution, choiceSolutionString);
 	
 	// Create wrongs
-	NSArray* choiceWrongString = [self gameChoiceCreate];
 	
+	NSArray* choiceWrongString = [self gameChoiceCreate];
 	
 	for(int i = 0; i < 6; i++){
 		UIButton *button = [[UIButton alloc] init];
@@ -135,6 +124,7 @@ AVAudioPlayer *audioPlayerSounds;
 }
 
 -(void)gameChoicesRemove {
+	
 	NSLog(@"> Game | Choice Remove");
 	
 	for (UIView *subview in [self.choicesView subviews]) {
@@ -143,10 +133,10 @@ AVAudioPlayer *audioPlayerSounds;
 }
 
 -(void)gameChoiceCorrect {
+	
 	NSLog(@"> Game | Choice Correct");
 	
 	[self audioPlayerSounds:@"fx.click.wav"];
-	
 	
 	if( userLesson > 69 ){
 		userLessonComplete += 1;
@@ -169,6 +159,7 @@ AVAudioPlayer *audioPlayerSounds;
 }
 
 -(void)gameChoiceIncorrect {
+	
 	NSLog(@"> Game | Choice Incorrect");
 	
 	[self audioPlayerSounds:@"fx.error.wav"];
@@ -183,6 +174,7 @@ AVAudioPlayer *audioPlayerSounds;
 
 
 -(NSMutableArray*)gameChoiceCreate {
+	
 	NSMutableArray *randSequence = [[NSMutableArray alloc] initWithCapacity:6];
 	
 	int choiceFiller = 0;
@@ -229,7 +221,6 @@ AVAudioPlayer *audioPlayerSounds;
 		NSString *suffixCurrent = [completeCurrent substringFromIndex: [completeCurrent length] - 1];
 		NSString *prefixCurrent = [completeCurrent substringToIndex: 1];
 		
-		
 		if(userLessonComplete < 1){
 			if( [suffixTarget isEqual:suffixCurrent] && [prefixTarget isEqual:prefixCurrent] ){
 				return [UIColor colorWithRed:0 green:0.737 blue:0.556 alpha:1];
@@ -241,8 +232,6 @@ AVAudioPlayer *audioPlayerSounds;
 				return [UIColor colorWithRed:0 green:0.737 blue:0.556 alpha:1];
 			}
 		}
-		
-		
 		
 	}
 	return [UIColor colorWithRed:0.194 green:0.233 blue:0.276 alpha:1];
@@ -266,18 +255,18 @@ AVAudioPlayer *audioPlayerSounds;
 
 # pragma mark User -
 
-
 -(void)userStart {
+	
 	NSLog(@"> User | Created");
 	userLesson = 0;
 	userLessonMode = 1;
 	userLessonComplete = 0;
 }
 
-
 # pragma mark Animation -
 
 -(void)templateReadyAnimate {
+	
 	NSLog(@"> Anim | Ready");
 	
 	float barMaxLesson = [gameLessonsArray count];
@@ -338,8 +327,6 @@ AVAudioPlayer *audioPlayerSounds;
 }
 
 # pragma mark To clean -
-
-
 
 -(void)lessonStart {
 	NSLog(@"> Less | Start");
@@ -418,7 +405,5 @@ AVAudioPlayer *audioPlayerSounds;
 		[audioPlayerSounds play];
 	}
 }
-
-
 
 @end
