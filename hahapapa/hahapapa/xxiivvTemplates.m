@@ -17,15 +17,14 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
+    if (self) {}
     return self;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+	
 	// Do any additional setup after loading the view.
 }
 
@@ -35,8 +34,29 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)test {
-	NSLog(@"!!!!!!!");
+-(UIFont*)fontBig {
+	return [UIFont boldSystemFontOfSize:60.0f];
+}
+
+-(UILabel*)test2 {
+	
+	UILabel *loval;
+	
+	loval.backgroundColor = [UIColor blueColor];
+	
+	return loval;
+	
+}
+
+
+-(CGRect)lessonViewFrame {
+	
+	return CGRectMake(0, 0, screen.size.width, screen.size.height/2.5);
+}
+
+-(CGRect)choicesViewFrame {
+	
+	return CGRectMake(0, screen.size.height/2.5, screen.size.width, screen.size.height-(screen.size.height/2.5));
 }
 
 

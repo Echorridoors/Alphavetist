@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0355C35E17BDC34500F71C39 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0355C35D17BDC34500F71C39 /* QuartzCore.framework */; };
+		0355C36117BDC61D00F71C39 /* xxiivvLessons.m in Sources */ = {isa = PBXBuildFile; fileRef = 0355C36017BDC61C00F71C39 /* xxiivvLessons.m */; };
 		03D07C9117BD085100DE4475 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D07C9017BD085100DE4475 /* UIKit.framework */; };
 		03D07C9317BD085100DE4475 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D07C9217BD085100DE4475 /* Foundation.framework */; };
 		03D07C9517BD085100DE4475 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D07C9417BD085100DE4475 /* CoreGraphics.framework */; };
@@ -22,6 +24,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0355C35D17BDC34500F71C39 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		0355C35F17BDC61C00F71C39 /* xxiivvLessons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xxiivvLessons.h; sourceTree = "<group>"; };
+		0355C36017BDC61C00F71C39 /* xxiivvLessons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xxiivvLessons.m; sourceTree = "<group>"; };
 		03D07C8D17BD085100DE4475 /* hahapapa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hahapapa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03D07C9017BD085100DE4475 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		03D07C9217BD085100DE4475 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -47,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0355C35E17BDC34500F71C39 /* QuartzCore.framework in Frameworks */,
 				03D07C9117BD085100DE4475 /* UIKit.framework in Frameworks */,
 				03D07C9317BD085100DE4475 /* Foundation.framework in Frameworks */,
 				03D07C9517BD085100DE4475 /* CoreGraphics.framework in Frameworks */,
@@ -59,6 +65,7 @@
 		03D07C8417BD085100DE4475 = {
 			isa = PBXGroup;
 			children = (
+				0355C35D17BDC34500F71C39 /* QuartzCore.framework */,
 				03D07C9617BD085100DE4475 /* hahapapa */,
 				03D07C8F17BD085100DE4475 /* Frameworks */,
 				03D07C8E17BD085100DE4475 /* Products */,
@@ -88,11 +95,13 @@
 			children = (
 				03D07C9F17BD085100DE4475 /* xxiivvAppDelegate.h */,
 				03D07CA017BD085100DE4475 /* xxiivvAppDelegate.m */,
-				03D07CA817BD085100DE4475 /* MainStoryboard.storyboard */,
 				03D07CAB17BD085100DE4475 /* xxiivvViewController.h */,
 				03D07CAC17BD085100DE4475 /* xxiivvViewController.m */,
+				0355C35F17BDC61C00F71C39 /* xxiivvLessons.h */,
+				0355C36017BDC61C00F71C39 /* xxiivvLessons.m */,
 				03D07CB317BD08CB00DE4475 /* xxiivvTemplates.h */,
 				03D07CB417BD08CB00DE4475 /* xxiivvTemplates.m */,
+				03D07CA817BD085100DE4475 /* MainStoryboard.storyboard */,
 				03D07C9717BD085100DE4475 /* Supporting Files */,
 			);
 			path = hahapapa;
@@ -183,6 +192,7 @@
 				03D07CA117BD085100DE4475 /* xxiivvAppDelegate.m in Sources */,
 				03D07CAD17BD085100DE4475 /* xxiivvViewController.m in Sources */,
 				03D07CB517BD08CB00DE4475 /* xxiivvTemplates.m in Sources */,
+				0355C36117BDC61D00F71C39 /* xxiivvLessons.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,6 +315,7 @@
 				03D07CB217BD085100DE4475 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

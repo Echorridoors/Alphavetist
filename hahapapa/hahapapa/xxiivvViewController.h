@@ -10,4 +10,17 @@
 
 @interface xxiivvViewController : UIViewController
 
+	@property (strong, nonatomic) IBOutlet UIView *lessonView;
+	@property (strong, nonatomic) IBOutlet UIView *choicesView;
+	@property (strong, nonatomic) IBOutlet UIView *optionsView;
+	@property (strong, nonatomic) IBOutlet UIView *lessonProgressView;
+	@property (strong, nonatomic) IBOutlet UIImageView *lessonProgressBar;
+	@property (strong, nonatomic) IBOutlet UILabel *lessonEnglishLabel;
+	@property (strong, nonatomic) IBOutlet UILabel *lessonTypeLabel;
+
 @end
+
+CGRect screen;
+float screenMargin;
+float screenButtonWidth;
+float screenButtonHeight;

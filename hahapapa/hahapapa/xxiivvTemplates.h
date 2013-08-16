@@ -9,7 +9,10 @@
 #import "xxiivvViewController.h"
 
 @interface Template : xxiivvViewController
-
-- (void)test;
-
+	-(CGRect)lessonViewFrame;
+	-(CGRect)choicesViewFrame;
+	-(UIFont*)fontBig;
+	-(UILabel*)test2;
 @end
+
+UIView *test;
