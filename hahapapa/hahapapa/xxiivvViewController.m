@@ -87,9 +87,44 @@
 		[subview removeFromSuperview];
 	}
 	
+	// Create answer
 	choiceSolution = (arc4random() % 6);
 	NSString *choiceSolutionString = gameLessonsArray[userLesson][1];
 	NSLog(@"> Less | Solution %d %@",choiceSolution, choiceSolutionString);
+	
+	// Create wrongs
+	NSMutableArray *randSequence = [[NSMutableArray alloc] initWithCapacity:6];
+	for (int ii = 1; ii < userLesson+10; ++ii){
+		[randSequence addObject:[NSNumber numberWithInt:ii]];
+	}
+	for (int ii = 7; ii > 0; --ii){
+		int r = arc4random() % (ii + 1);
+		[randSequence exchangeObjectAtIndex:ii withObjectAtIndex:r];
+	}
+	
+	NSMutableArray *choiceWrongString = [[NSMutableArray alloc] initWithCapacity:6];
+	
+	int mod = 0;
+	for (NSString* key in randSequence) {
+		int k = [key intValue] + mod;
+		
+		//id value = [xyz objectForKey:key];
+		// do stuff
+		NSLog(@">>>>> %d %@", k, gameLessonsArray[k][1]);
+		
+//		setTitle:choiceWrongString
+		
+		
+		if( k == userLesson ){
+			mod = 1;
+			k += 1;
+		}
+		else{
+			
+		}
+		[choiceWrongString addObject:gameLessonsArray[k][1]];
+		
+	}	
 	
 	for(int i = 0; i < 6; i++){
 		
@@ -113,6 +148,9 @@
 		if(i == choiceSolution){
 			[button setTitle:choiceSolutionString forState:UIControlStateNormal];
 		}
+		else{
+			[button setTitle:choiceWrongString[i] forState:UIControlStateNormal];
+		}
 		
 		[self.choicesView addSubview:button];
 	}
@@ -128,17 +166,14 @@
 
 -(void)gameChoiceCorrect {
 	NSLog(@"> Game | Choice Correct");
-	
-//	for (UIView *subview in [self.choicesView subviews]) {
-//		[subview removeFromSuperview];
-//	}
-	
-	NSLog(@"TEST %@",[self.view subviews]);
+	userLesson += 1;
+	NSLog(@"> Game | Start Lesson: %d", userLesson);
 	
 }
 
 -(void)gameChoiceIncorrect {
 	NSLog(@"> Game | Choice Incorrect");
+	userLesson = 0;
 	
 }
 
@@ -156,8 +191,17 @@
 	
 	[self gameStart];
 	
-	NSLog(@"Choice %d",choiceId);
 }
+
+# pragma mark User -
+
+
+-(void)userStart {
+	NSLog(@"> User | Created");
+	userLesson = 1;
+	userLessonMode = 1;
+}
+
 
 # pragma mark To clean -
 
@@ -188,10 +232,14 @@
 	
 }
 
--(void)userStart {
-	NSLog(@"> User | Created");
-	userLesson = 30;
-}
+
+
+
+
+
+# pragma mark To clean -
+
+
 
 -(void)lessonStart {
 	NSLog(@"> Less | Start");

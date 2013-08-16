@@ -26,5 +26,8 @@ float screenButtonWidth;
 float screenButtonHeight;
 
 int userLesson;
+int userLessonMode;
+int userLessonHiragana;
+int userLessonKatakana;
 
 int choiceSolution;
