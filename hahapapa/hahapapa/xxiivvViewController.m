@@ -93,64 +93,29 @@
 	NSLog(@"> Less | Solution %d %@",choiceSolution, choiceSolutionString);
 	
 	// Create wrongs
-	NSMutableArray *randSequence = [[NSMutableArray alloc] initWithCapacity:6];
-	for (int ii = 1; ii < userLesson+10; ++ii){
-		[randSequence addObject:[NSNumber numberWithInt:ii]];
-	}
-	for (int ii = 7; ii > 0; --ii){
-		int r = arc4random() % (ii + 1);
-		[randSequence exchangeObjectAtIndex:ii withObjectAtIndex:r];
-	}
+	NSArray* choiceWrongString = [self gameChoiceCreate];
 	
-	NSMutableArray *choiceWrongString = [[NSMutableArray alloc] initWithCapacity:6];
-	
-	int mod = 0;
-	for (NSString* key in randSequence) {
-		int k = [key intValue] + mod;
-		
-		//id value = [xyz objectForKey:key];
-		// do stuff
-		NSLog(@">>>>> %d %@", k, gameLessonsArray[k][1]);
-		
-//		setTitle:choiceWrongString
-		
-		
-		if( k == userLesson ){
-			mod = 1;
-			k += 1;
-		}
-		else{
-			
-		}
-		[choiceWrongString addObject:gameLessonsArray[k][1]];
-		
-	}	
 	
 	for(int i = 0; i < 6; i++){
-		
 		UIButton *button = [[UIButton alloc] init];
-		
 		[button addTarget:self action:NSSelectorFromString(@"gameChoiceSelected:") forControlEvents:UIControlEventTouchDown];
-		
 		button.frame = [template choiceButton:i].frame;
 		button.tag = [template choiceButton:i].tag;
 		button.titleLabel.font = [template choiceButton:i].titleLabel.font;
 		button.titleLabel.textColor = [template choiceButton:i].titleLabel.textColor;
 		button.contentEdgeInsets = [template choiceButton:i].contentEdgeInsets;
 		button.alpha = 0;
-			
 		[button.layer addSublayer:[template bottomBorder]];
-		
 		[button setTitle: [lesson lessonContent][i][1] forState: UIControlStateNormal];
-		
-		[button setBackgroundColor:[UIColor redColor]];
-		
 		if(i == choiceSolution){
 			[button setTitle:choiceSolutionString forState:UIControlStateNormal];
 		}
 		else{
 			[button setTitle:choiceWrongString[i] forState:UIControlStateNormal];
 		}
+		
+		
+		[button setBackgroundColor:[self gameChoiceColour:button.titleLabel.text]];
 		
 		[self.choicesView addSubview:button];
 	}
@@ -175,6 +140,49 @@
 	NSLog(@"> Game | Choice Incorrect");
 	userLesson = 0;
 	
+}
+
+
+-(NSMutableArray*)gameChoiceCreate {
+	NSMutableArray *randSequence = [[NSMutableArray alloc] initWithCapacity:6];
+	for (int ii = 1; ii < userLesson+10; ++ii){
+		[randSequence addObject:[NSNumber numberWithInt:ii]];
+	}
+	for (int ii = 7; ii > 0; --ii){
+		int r = arc4random() % (ii + 1);
+		[randSequence exchangeObjectAtIndex:ii withObjectAtIndex:r];
+	}
+	NSMutableArray *choiceWrongString = [[NSMutableArray alloc] initWithCapacity:6];
+	int mod = 0;
+	for (NSString* key in randSequence) {
+		int k = [key intValue] + mod;
+		if( k == userLesson ){
+			mod = 1;
+			k += 1;
+		}
+		[choiceWrongString addObject:gameLessonsArray[k][1]];
+	}
+	return choiceWrongString;
+}
+
+
+-(UIColor*)gameChoiceColour:(NSString*)letter {
+
+	NSLog(@"LETTER %@",letter);
+	
+	for (NSArray* key in gameLessonsArray) {
+		if(![letter isEqual:key[1]]){
+			continue;
+		}
+		
+		if( [key[0] isEqual:@"ka"] ){
+			return [UIColor blueColor];
+		}
+		
+		
+	}
+	
+	return [UIColor redColor];
 }
 
 
