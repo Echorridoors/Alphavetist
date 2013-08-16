@@ -62,6 +62,14 @@
 	
 	self.lessonEnglishLabel.text = gameLessonsArray[userLesson][0];
 	
+	
+	if(userLessonMode == 1 ){
+		self.lessonTypeLabel.text = @"ひらがな";
+	}
+	else{
+		self.lessonTypeLabel.text = @"カタカナ";
+	}
+	
 	NSLog(@"- Game | Ready");
 	
 	[self templateReadyAnimate];
@@ -89,7 +97,7 @@
 	
 	// Create answer
 	choiceSolution = (arc4random() % 6);
-	NSString *choiceSolutionString = gameLessonsArray[userLesson][1];
+	NSString *choiceSolutionString = gameLessonsArray[userLesson][userLessonMode];
 	NSLog(@"> Less | Solution %d %@",choiceSolution, choiceSolutionString);
 	
 	// Create wrongs
@@ -131,27 +139,54 @@
 
 -(void)gameChoiceCorrect {
 	NSLog(@"> Game | Choice Correct");
-	userLesson += 1;
+	
+	
+	if( userLesson > 69 ){
+		userLesson = 0;
+		if( userLessonMode == 1){
+			userLessonMode = 2;
+		}
+		else{
+			userLessonMode = 1;
+		}
+	}
+	else{
+		userLesson += 1;
+	}
+	
 	NSLog(@"> Game | Start Lesson: %d", userLesson);
 	
 }
 
 -(void)gameChoiceIncorrect {
 	NSLog(@"> Game | Choice Incorrect");
-	userLesson = 0;
+	
+	
+	userLesson -= 6;
+	userLesson = abs(userLesson);
 	
 }
 
 
 -(NSMutableArray*)gameChoiceCreate {
 	NSMutableArray *randSequence = [[NSMutableArray alloc] initWithCapacity:6];
-	for (int ii = 1; ii < userLesson+10; ++ii){
+	
+	int choiceFiller = 0;
+	
+	if( userLesson < 11 ){
+		choiceFiller = 10;
+	}
+	
+	for (int ii = 1; ii < userLesson+choiceFiller; ++ii){
 		[randSequence addObject:[NSNumber numberWithInt:ii]];
 	}
-	for (int ii = 7; ii > 0; --ii){
+	for (int ii = [randSequence count]-1; ii > 0; --ii){
 		int r = arc4random() % (ii + 1);
 		[randSequence exchangeObjectAtIndex:ii withObjectAtIndex:r];
 	}
+	
+	NSLog(@"NUMBAR %@",randSequence);
+	
 	NSMutableArray *choiceWrongString = [[NSMutableArray alloc] initWithCapacity:6];
 	int mod = 0;
 	for (NSString* key in randSequence) {
@@ -160,7 +195,8 @@
 			mod = 1;
 			k += 1;
 		}
-		[choiceWrongString addObject:gameLessonsArray[k][1]];
+		if( k > [gameLessonsArray count]){ k = 10; }
+		[choiceWrongString addObject:gameLessonsArray[k][userLessonMode]];
 	}
 	return choiceWrongString;
 }
@@ -206,7 +242,7 @@
 
 -(void)userStart {
 	NSLog(@"> User | Created");
-	userLesson = 1;
+	userLesson = 70;
 	userLessonMode = 1;
 }
 
@@ -285,12 +321,30 @@
 	
 	self.lessonTypeLabel.textColor = [UIColor whiteColor];
 	self.lessonTypeLabel.frame = CGRectMake(0, 0, screen.size.width, screenMargin*8);
-	self.lessonTypeLabel.text = @"ひらがな";
-	self.lessonTypeLabel = [template test2];
 	
 	self.choicesView.frame = [template choicesViewFrame];
 	self.choicesView.backgroundColor = [UIColor blackColor];
 	
+	self.lessonModeToggle.frame = self.lessonView.frame;
+	
 }
+
+- (IBAction)lessonModeToggle:(id)sender {
+	
+	NSLog(@"> Mode | Toggle");
+	
+	if( userLessonMode == 1 ){
+		userLessonMode = 2;
+	}
+	else{
+		userLessonMode = 1;
+	}
+	
+	userLesson = 0;
+	
+	[self gameStart];
+	
+}
+
 
 @end
