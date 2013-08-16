@@ -12,15 +12,17 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="snF-xa-gQ0" userLabel="feedbackView">
+                                <rect key="frame" x="40" y="210" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <view contentMode="scaleToFill" id="BOO-dn-Rxm" userLabel="optionsView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" id="xOX-9M-vBs" userLabel="choicesView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" id="shT-fH-IcR" userLabel="lessonView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
@@ -67,13 +69,13 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.87862112226277367" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="choicesView" destination="xOX-9M-vBs" id="KDj-ST-Ynu"/>
+                        <outlet property="feedbackView" destination="snF-xa-gQ0" id="lOL-Je-gmJ"/>
                         <outlet property="lessonEnglishLabel" destination="Pe1-uj-e7m" id="nfG-tf-yaL"/>
                         <outlet property="lessonModeToggle" destination="Z9B-cy-WM7" id="7ud-nr-oPj"/>
                         <outlet property="lessonProgressBar" destination="EC1-Di-ExK" id="ue1-6O-KVl"/>
@@ -93,6 +95,7 @@
             <relationships>
                 <relationship kind="action" name="lessonModeToggle:"/>
                 <relationship kind="outlet" name="choicesView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="feedbackView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="lessonEnglishLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="lessonModeToggle" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="lessonProgressBar" candidateClass="UIImageView"/>

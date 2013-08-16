@@ -11,6 +11,11 @@
 #import "xxiivvLessons.h"
 #import <QuartzCore/QuartzCore.h>
 
+#import <AudioToolbox/AudioToolbox.h>
+#import <AVFoundation/AVFoundation.h>
+
+AVAudioPlayer *audioPlayerSounds;
+
 @interface xxiivvViewController (){
 	Template *template;
 	Lesson *lesson;
@@ -140,8 +145,11 @@
 -(void)gameChoiceCorrect {
 	NSLog(@"> Game | Choice Correct");
 	
+	[self audioPlayerSounds:@"fx.click.wav"];
+	
 	
 	if( userLesson > 69 ){
+		userLessonComplete += 1;
 		userLesson = 0;
 		if( userLessonMode == 1){
 			userLessonMode = 2;
@@ -154,6 +162,8 @@
 		userLesson += 1;
 	}
 	
+	[self templateChoiceCorrectAnimation];
+	
 	NSLog(@"> Game | Start Lesson: %d", userLesson);
 	
 }
@@ -161,6 +171,10 @@
 -(void)gameChoiceIncorrect {
 	NSLog(@"> Game | Choice Incorrect");
 	
+	[self audioPlayerSounds:@"fx.error.wav"];
+	
+	
+	[self templateChoiceIncorrectAnimation];
 	
 	userLesson -= 6;
 	userLesson = abs(userLesson);
@@ -185,8 +199,6 @@
 		[randSequence exchangeObjectAtIndex:ii withObjectAtIndex:r];
 	}
 	
-	NSLog(@"NUMBAR %@",randSequence);
-	
 	NSMutableArray *choiceWrongString = [[NSMutableArray alloc] initWithCapacity:6];
 	int mod = 0;
 	for (NSString* key in randSequence) {
@@ -203,22 +215,37 @@
 
 
 -(UIColor*)gameChoiceColour:(NSString*)letter {
-
-	NSLog(@"LETTER %@",letter);
 	
 	for (NSArray* key in gameLessonsArray) {
-		if(![letter isEqual:key[1]]){
+		if(![letter isEqual:key[1]] && ![letter isEqual:key[2]]){
 			continue;
 		}
 		
-		if( [key[0] isEqual:@"ka"] ){
-			return [UIColor blueColor];
+		NSString *completeTarget = key[0];
+		NSString *suffixTarget = [completeTarget substringFromIndex: [completeTarget length] - 1];
+		NSString *prefixTarget = [completeTarget substringToIndex: 1];
+		
+		NSString *completeCurrent = gameLessonsArray[userLesson][0];
+		NSString *suffixCurrent = [completeCurrent substringFromIndex: [completeCurrent length] - 1];
+		NSString *prefixCurrent = [completeCurrent substringToIndex: 1];
+		
+		
+		if(userLessonComplete < 1){
+			if( [suffixTarget isEqual:suffixCurrent] && [prefixTarget isEqual:prefixCurrent] ){
+				return [UIColor colorWithRed:0 green:0.737 blue:0.556 alpha:1];
+			}
+			if( [prefixTarget isEqual:prefixCurrent] ){
+				return [UIColor colorWithRed:0 green:0.737 blue:0.556 alpha:1];
+			}
+			if( [suffixTarget isEqual:suffixCurrent] ){
+				return [UIColor colorWithRed:0 green:0.737 blue:0.556 alpha:1];
+			}
 		}
 		
 		
+		
 	}
-	
-	return [UIColor redColor];
+	return [UIColor colorWithRed:0.194 green:0.233 blue:0.276 alpha:1];
 }
 
 
@@ -242,8 +269,9 @@
 
 -(void)userStart {
 	NSLog(@"> User | Created");
-	userLesson = 70;
+	userLesson = 0;
 	userLessonMode = 1;
+	userLessonComplete = 0;
 }
 
 
@@ -266,8 +294,6 @@
 	self.lessonProgressBar.frame = CGRectMake(3, 3, (screenButtonWidth-6)*(barCurrentLesson/barMaxLesson), (screenMargin/2) -6 );
 	[UIView commitAnimations];
 	
-	NSLog(@"Progress %f", (screenButtonWidth-6)*(barCurrentLesson/barMaxLesson) );
-	
 	// Animate button fade
 	int i = 0;
 	for (UIView *subview in [self.choicesView subviews] ) {
@@ -280,11 +306,36 @@
 		i+=1;
 	}
 	
+}
+
+-(void)templateChoiceCorrectAnimation {
 	
+	self.feedbackView.backgroundColor = [UIColor colorWithWhite:0.5 alpha:1];
+	
+	self.feedbackView.alpha = 0.25;
+	
+	[UIView beginAnimations:nil context:nil];
+	[UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+	[UIView setAnimationDuration:0.3];
+	self.feedbackView.alpha = 0;
+	[UIView commitAnimations];
 	
 }
 
 
+-(void)templateChoiceIncorrectAnimation {
+	
+	self.feedbackView.backgroundColor = [UIColor redColor];
+	
+	self.feedbackView.alpha = 1;
+	
+	[UIView beginAnimations:nil context:nil];
+	[UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+	[UIView setAnimationDuration:0.6];
+	self.feedbackView.alpha = 0;
+	[UIView commitAnimations];
+	
+}
 
 # pragma mark To clean -
 
@@ -306,7 +357,7 @@
 	template = [[Template alloc] init];
 	
 	self.lessonView.frame = [template lessonViewFrame];
-	self.lessonView.backgroundColor = [UIColor blackColor];
+	self.lessonView.backgroundColor = [UIColor colorWithWhite:0 alpha:0];
 	
 	self.lessonEnglishLabel.font = [template fontBig];
 	self.lessonEnglishLabel.frame = CGRectMake(0, screenMargin, screen.size.width, screen.size.height/6);
@@ -323,10 +374,11 @@
 	self.lessonTypeLabel.frame = CGRectMake(0, 0, screen.size.width, screenMargin*8);
 	
 	self.choicesView.frame = [template choicesViewFrame];
-	self.choicesView.backgroundColor = [UIColor blackColor];
+	self.choicesView.backgroundColor = [UIColor colorWithWhite:0 alpha:0];
 	
 	self.lessonModeToggle.frame = self.lessonView.frame;
 	
+	self.feedbackView.frame = screen;	
 }
 
 - (IBAction)lessonModeToggle:(id)sender {
@@ -345,6 +397,28 @@
 	[self gameStart];
 	
 }
+
+-(void)audioPlayerSounds:(NSString *)filename{
+	
+	NSLog(@"$ Audio | Play %@",filename);
+	
+	NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
+	resourcePath = [resourcePath stringByAppendingString: [NSString stringWithFormat:@"/%@", filename] ];
+	NSError* err;
+	audioPlayerSounds = [[AVAudioPlayer alloc] initWithContentsOfURL: [NSURL fileURLWithPath:resourcePath] error:&err];
+	
+	audioPlayerSounds.volume = 1.0;
+	
+	audioPlayerSounds.numberOfLoops = 0;
+	audioPlayerSounds.currentTime = 0;
+	
+	if(err)	{ NSLog(@"%@",err); }
+	else	{
+		[audioPlayerSounds prepareToPlay];
+		[audioPlayerSounds play];
+	}
+}
+
 
 
 @end

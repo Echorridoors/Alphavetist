@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		0355C35E17BDC34500F71C39 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0355C35D17BDC34500F71C39 /* QuartzCore.framework */; };
 		0355C36117BDC61D00F71C39 /* xxiivvLessons.m in Sources */ = {isa = PBXBuildFile; fileRef = 0355C36017BDC61C00F71C39 /* xxiivvLessons.m */; };
+		0355C36317BE19E500F71C39 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0355C36217BE19E500F71C39 /* AVFoundation.framework */; };
+		0355C36517BE1A0100F71C39 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0355C36417BE1A0100F71C39 /* AudioToolbox.framework */; };
+		0355C36917BE1A7A00F71C39 /* fx.accepted.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0355C36617BE1A7A00F71C39 /* fx.accepted.wav */; };
+		0355C36A17BE1A7A00F71C39 /* fx.click.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0355C36717BE1A7A00F71C39 /* fx.click.wav */; };
+		0355C36B17BE1A7A00F71C39 /* fx.error.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0355C36817BE1A7A00F71C39 /* fx.error.wav */; };
 		03D07C9117BD085100DE4475 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D07C9017BD085100DE4475 /* UIKit.framework */; };
 		03D07C9317BD085100DE4475 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D07C9217BD085100DE4475 /* Foundation.framework */; };
 		03D07C9517BD085100DE4475 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D07C9417BD085100DE4475 /* CoreGraphics.framework */; };
@@ -27,6 +32,11 @@
 		0355C35D17BDC34500F71C39 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0355C35F17BDC61C00F71C39 /* xxiivvLessons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xxiivvLessons.h; sourceTree = "<group>"; };
 		0355C36017BDC61C00F71C39 /* xxiivvLessons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xxiivvLessons.m; sourceTree = "<group>"; };
+		0355C36217BE19E500F71C39 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		0355C36417BE1A0100F71C39 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		0355C36617BE1A7A00F71C39 /* fx.accepted.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fx.accepted.wav; sourceTree = "<group>"; };
+		0355C36717BE1A7A00F71C39 /* fx.click.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fx.click.wav; sourceTree = "<group>"; };
+		0355C36817BE1A7A00F71C39 /* fx.error.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fx.error.wav; sourceTree = "<group>"; };
 		03D07C8D17BD085100DE4475 /* hahapapa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hahapapa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03D07C9017BD085100DE4475 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		03D07C9217BD085100DE4475 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -52,6 +62,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0355C36517BE1A0100F71C39 /* AudioToolbox.framework in Frameworks */,
+				0355C36317BE19E500F71C39 /* AVFoundation.framework in Frameworks */,
 				0355C35E17BDC34500F71C39 /* QuartzCore.framework in Frameworks */,
 				03D07C9117BD085100DE4475 /* UIKit.framework in Frameworks */,
 				03D07C9317BD085100DE4475 /* Foundation.framework in Frameworks */,
@@ -65,6 +77,8 @@
 		03D07C8417BD085100DE4475 = {
 			isa = PBXGroup;
 			children = (
+				0355C36417BE1A0100F71C39 /* AudioToolbox.framework */,
+				0355C36217BE19E500F71C39 /* AVFoundation.framework */,
 				0355C35D17BDC34500F71C39 /* QuartzCore.framework */,
 				03D07C9617BD085100DE4475 /* hahapapa */,
 				03D07C8F17BD085100DE4475 /* Frameworks */,
@@ -93,6 +107,9 @@
 		03D07C9617BD085100DE4475 /* hahapapa */ = {
 			isa = PBXGroup;
 			children = (
+				0355C36617BE1A7A00F71C39 /* fx.accepted.wav */,
+				0355C36717BE1A7A00F71C39 /* fx.click.wav */,
+				0355C36817BE1A7A00F71C39 /* fx.error.wav */,
 				03D07C9F17BD085100DE4475 /* xxiivvAppDelegate.h */,
 				03D07CA017BD085100DE4475 /* xxiivvAppDelegate.m */,
 				03D07CAB17BD085100DE4475 /* xxiivvViewController.h */,
@@ -178,6 +195,9 @@
 				03D07CA517BD085100DE4475 /* Default@2x.png in Resources */,
 				03D07CA717BD085100DE4475 /* Default-568h@2x.png in Resources */,
 				03D07CAA17BD085100DE4475 /* MainStoryboard.storyboard in Resources */,
+				0355C36917BE1A7A00F71C39 /* fx.accepted.wav in Resources */,
+				0355C36A17BE1A7A00F71C39 /* fx.click.wav in Resources */,
+				0355C36B17BE1A7A00F71C39 /* fx.error.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

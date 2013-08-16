@@ -10,6 +10,7 @@
 
 @interface xxiivvViewController : UIViewController
 
+	@property (strong, nonatomic) IBOutlet UIImageView *feedbackView;
 	@property (strong, nonatomic) IBOutlet UIView *lessonView;
 	@property (strong, nonatomic) IBOutlet UIView *choicesView;
 	@property (strong, nonatomic) IBOutlet UIView *optionsView;
@@ -31,5 +32,6 @@ int userLesson;
 int userLessonMode;
 int userLessonHiragana;
 int userLessonKatakana;
+int userLessonComplete;
 
 int choiceSolution;
