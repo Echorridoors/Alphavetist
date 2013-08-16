@@ -8,8 +8,9 @@
 
 #import "xxiivvViewController.h"
 
-@interface xxiivvLessons : xxiivvViewController
-
+@interface Lesson : xxiivvViewController
+-(NSArray*)lessonContent;
+-(int)nextLesson;
 @end
 
 NSArray *gameLessonsArray;

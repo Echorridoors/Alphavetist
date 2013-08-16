@@ -13,6 +13,7 @@
 	-(CGRect)choicesViewFrame;
 	-(UIFont*)fontBig;
 	-(UILabel*)test2;
+	-(UIButton*)choiceButton:(int)i;
 @end
 
 UIView *test;

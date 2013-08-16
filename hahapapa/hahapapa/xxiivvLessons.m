@@ -8,11 +8,11 @@
 
 #import "xxiivvLessons.h"
 
-@interface xxiivvLessons ()
+@interface Lesson ()
 
 @end
 
-@implementation xxiivvLessons
+@implementation Lesson
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,7 +35,12 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)lessonsSystem{
+-(int)nextLesson {
+	return 1;
+}
+
+
+- (NSArray*)lessonContent{
 	
 	gameLessonsArray = @[
   @[@"a", @"あ", @"ア"],
@@ -130,6 +135,8 @@
   
   @[@"n", @"ん", @"ン"]
 	];
+	
+	return gameLessonsArray;
 
 }
 

@@ -24,3 +24,7 @@ CGRect screen;
 float screenMargin;
 float screenButtonWidth;
 float screenButtonHeight;
+
+int userLesson;
+
+int choiceSolution;

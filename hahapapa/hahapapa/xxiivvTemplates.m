@@ -7,6 +7,7 @@
 //
 
 #import "xxiivvTemplates.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface Template ()
 
@@ -39,12 +40,40 @@
 }
 
 -(UILabel*)test2 {
-	
 	UILabel *loval;
 	
 	loval.backgroundColor = [UIColor blueColor];
 	
 	return loval;
+}
+
+-(UIButton*)choiceButton:(int)i{
+	
+	UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+	[button addTarget:self action:NSSelectorFromString(@"gameChoiceSelected:") forControlEvents:UIControlEventTouchDown];
+	button.tag = i;
+	button.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:14];
+	button.titleLabel.font = [UIFont boldSystemFontOfSize:50.0f];
+	[button setTitle: @"em" forState: UIControlStateNormal];
+	[button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+	button.contentEdgeInsets = UIEdgeInsetsMake(-1*(screenMargin*0.2), 0, 0, 0);
+	button.backgroundColor = [UIColor blueColor];
+	button.alpha = 0;
+	
+	if( i > 2 ){
+		button.frame = CGRectMake( ((i-3)*(screenButtonWidth))+((1+(i-3))*(screenMargin/2)), (screenButtonHeight)+(screenMargin), screenButtonWidth, screenButtonHeight);
+	}
+	else{
+		button.frame = CGRectMake( (i*(screenButtonWidth))+((1+i)*(screenMargin/2)), screenMargin/2, screenButtonWidth, screenButtonHeight);
+	}
+	
+	
+	CALayer *bottomBorder = [CALayer layer];
+	bottomBorder.frame = CGRectMake(0, screenButtonHeight-(screenButtonHeight/10), screenButtonWidth, screenButtonHeight/10);
+	bottomBorder.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2].CGColor;
+	[button.layer addSublayer:bottomBorder];
+	
+	return button;
 	
 }
 
