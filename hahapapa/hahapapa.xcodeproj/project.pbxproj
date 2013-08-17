@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		034DF19517BF179800DE579F /* fx.completed.wav in Resources */ = {isa = PBXBuildFile; fileRef = 034DF19417BF179800DE579F /* fx.completed.wav */; };
 		0355C35E17BDC34500F71C39 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0355C35D17BDC34500F71C39 /* QuartzCore.framework */; };
 		0355C36117BDC61D00F71C39 /* xxiivvLessons.m in Sources */ = {isa = PBXBuildFile; fileRef = 0355C36017BDC61C00F71C39 /* xxiivvLessons.m */; };
 		0355C36317BE19E500F71C39 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0355C36217BE19E500F71C39 /* AVFoundation.framework */; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		034DF19417BF179800DE579F /* fx.completed.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fx.completed.wav; sourceTree = "<group>"; };
 		0355C35D17BDC34500F71C39 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0355C35F17BDC61C00F71C39 /* xxiivvLessons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xxiivvLessons.h; sourceTree = "<group>"; };
 		0355C36017BDC61C00F71C39 /* xxiivvLessons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xxiivvLessons.m; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 		03D07C9617BD085100DE4475 /* hahapapa */ = {
 			isa = PBXGroup;
 			children = (
+				034DF19417BF179800DE579F /* fx.completed.wav */,
 				0355C36617BE1A7A00F71C39 /* fx.accepted.wav */,
 				0355C36717BE1A7A00F71C39 /* fx.click.wav */,
 				0355C36817BE1A7A00F71C39 /* fx.error.wav */,
@@ -214,6 +217,7 @@
 				0355C37117BE1D6F00F71C39 /* icon.72.png in Resources */,
 				0355C37217BE1D6F00F71C39 /* icon.114.png in Resources */,
 				0355C37317BE1D6F00F71C39 /* icon.144.png in Resources */,
+				034DF19517BF179800DE579F /* fx.completed.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

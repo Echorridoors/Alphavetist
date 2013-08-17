@@ -137,9 +137,9 @@ AVAudioPlayer *audioPlayerSounds;
 	
 	NSLog(@"> Game | Choice Correct");
 	
-	[self audioPlayerSounds:@"fx.click.wav"];
 	
 	if( userLesson > 69 ){
+		[self audioPlayerSounds:@"fx.completed.wav"];
 		userLessonComplete += 1;
 		userLesson = 0;
 		if( userLessonMode == 1){
@@ -150,6 +150,7 @@ AVAudioPlayer *audioPlayerSounds;
 		}
 	}
 	else{
+		[self audioPlayerSounds:@"fx.click.wav"];
 		userLesson += 1;
 	}
 	
