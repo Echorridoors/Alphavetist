@@ -126,6 +126,7 @@ AVAudioPlayer *audioPlayerSounds;
 	NSLog(@"> Game | Choice Remove");
 	
 	for (UIView *subview in [self.choicesView subviews]) {
+		if(subview.tag != 100)
 		[subview removeFromSuperview];
 	}
 }
@@ -241,7 +242,17 @@ AVAudioPlayer *audioPlayerSounds;
 
 -(void)gameChoiceSelected:(id)sender {
 	
-	int choiceId = ((UIView*)sender).tag;
+	int choiceId = (int)((UIView*)sender).tag;
+	
+	self.optionSelector.frame = CGRectMake([template choiceButton:choiceId].frame.origin.x, [template choiceButton:choiceId].frame.origin.y+(screen.size.height-screen.size.width), [template choiceButton:choiceId].frame.size.width, [template choiceButton:choiceId].frame.size.height);
+	self.optionSelector.backgroundColor = [UIColor colorWithWhite:1 alpha:0.5];
+	
+	[UIView beginAnimations:nil context:nil];
+	[UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+	[UIView setAnimationDuration:0.5];
+	self.optionSelector.backgroundColor = [UIColor colorWithWhite:1 alpha:0];
+	[UIView commitAnimations];
+	
 	
 	if(choiceId == choiceSolution){
 		[self gameChoiceCorrect];	
@@ -341,6 +352,8 @@ AVAudioPlayer *audioPlayerSounds;
 	screenMargin = screen.size.width/8;
 	screenButtonWidth = (screen.size.width - (4*(screenMargin/2)))/3;
 	screenButtonHeight = ( (screen.size.height-(screen.size.height/2.5)) - (3*(screenMargin/2)) )/2 - (screenMargin/4);
+	
+	self.optionSelector.frame = CGRectMake(0, 0, 0, 0);
 	
 	template = [[Template alloc] init];
 	

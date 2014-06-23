@@ -20,6 +20,7 @@
 	@property (strong, nonatomic) IBOutlet UILabel *lessonTypeLabel;
 	@property (strong, nonatomic) IBOutlet UIButton *lessonModeToggle;
 	- (IBAction)lessonModeToggle:(id)sender;
+	@property (strong, nonatomic) IBOutlet UIView *optionSelector;
 
 @end
 
