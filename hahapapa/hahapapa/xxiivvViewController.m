@@ -176,12 +176,12 @@ AVAudioPlayer *audioPlayerSounds;
 
 -(NSMutableArray*)gameChoiceCreate {
 	
-	NSMutableArray *randSequence = [[NSMutableArray alloc] initWithCapacity:6];
+	NSMutableArray *randSequence = [[NSMutableArray alloc] initWithCapacity:11];
 	
 	int choiceFiller = 0;
 	
 	if( userLesson < 11 ){
-		choiceFiller = 10;
+		choiceFiller = 15;
 	}
 	
 	for (int ii = 1; ii < userLesson+choiceFiller; ++ii){
@@ -192,7 +192,7 @@ AVAudioPlayer *audioPlayerSounds;
 		[randSequence exchangeObjectAtIndex:ii withObjectAtIndex:r];
 	}
 	
-	NSMutableArray *choiceWrongString = [[NSMutableArray alloc] initWithCapacity:6];
+	NSMutableArray *choiceWrongString = [[NSMutableArray alloc] initWithCapacity:11];
 	int mod = 0;
 	for (NSString* key in randSequence) {
 		int k = [key intValue] + mod;
@@ -298,9 +298,9 @@ AVAudioPlayer *audioPlayerSounds;
 
 -(void)templateChoiceCorrectAnimation {
 	
-	self.feedbackView.backgroundColor = [UIColor colorWithWhite:0.5 alpha:1];
+	self.feedbackView.backgroundColor = [UIColor whiteColor];
 	
-	self.feedbackView.alpha = 0.25;
+	self.feedbackView.alpha = 0.4;
 	
 	[UIView beginAnimations:nil context:nil];
 	[UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
@@ -312,6 +312,8 @@ AVAudioPlayer *audioPlayerSounds;
 
 
 -(void)templateChoiceIncorrectAnimation {
+	
+	NSLog(@"!!");
 	
 	self.feedbackView.backgroundColor = [UIColor redColor];
 	
@@ -349,10 +351,7 @@ AVAudioPlayer *audioPlayerSounds;
 	self.lessonEnglishLabel.textColor = [UIColor colorWithWhite:0.1 alpha:1];
 	self.lessonEnglishLabel.text = @"na";
 	
-	
-	
 	self.choicesView.frame = CGRectMake(0, screen.size.height-screen.size.width, screen.size.width, screen.size.width);
-	
 	
 	self.lessonProgressView.frame = CGRectMake(screen.size.width/3, ((screen.size.height-screen.size.width)/2)+50, screen.size.width/3, 1);
 	self.lessonProgressView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
@@ -365,7 +364,7 @@ AVAudioPlayer *audioPlayerSounds;
 	
 	self.lessonModeToggle.frame = self.lessonView.frame;
 	
-	self.feedbackView.frame = screen;	
+	self.feedbackView.frame = CGRectMake(0, 0, screen.size.width, screen.size.height-screen.size.width);
 }
 
 - (IBAction)lessonModeToggle:(id)sender {
