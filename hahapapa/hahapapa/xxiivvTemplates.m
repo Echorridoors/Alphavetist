@@ -51,16 +51,13 @@
 	
 	UIButton *button = [[UIButton alloc] init];
 	
-//	UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
 	[button addTarget:self action:NSSelectorFromString(@"gameChoiceSelected:") forControlEvents:UIControlEventTouchDown];
 	button.tag = i;
-	button.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:14];
-	button.titleLabel.font = [UIFont boldSystemFontOfSize:50.0f];
+	button.titleLabel.font = [UIFont fontWithName:@"AppleSDGothicNeo-Thin" size:70];
 	[button setTitle: @"em" forState: UIControlStateNormal];
-	[button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+	[button setTitleColor:[UIColor colorWithWhite:0.5 alpha:1] forState:UIControlStateNormal];
 	button.contentEdgeInsets = UIEdgeInsetsMake(-1*(screenMargin*0.2), 0, 0, 0);
-	button.backgroundColor = [UIColor blueColor];
-	button.alpha = 0;
+	button.alpha = 1;
 	
 	if( i > 2 ){
 		button.frame = CGRectMake( ((i-3)*(screenButtonWidth))+((1+(i-3))*(screenMargin/2)), (screenButtonHeight)+(screenMargin), screenButtonWidth, screenButtonHeight);
@@ -69,27 +66,27 @@
 		button.frame = CGRectMake( (i*(screenButtonWidth))+((1+i)*(screenMargin/2)), screenMargin/2, screenButtonWidth, screenButtonHeight);
 	}
 	
+	float tileSize = screen.size.width/3;
 	
-	CALayer *bottomBorder = [CALayer layer];
-	bottomBorder.frame = CGRectMake(0, screenButtonHeight-(screenButtonHeight/10), screenButtonWidth, screenButtonHeight/10);
-	bottomBorder.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2].CGColor;
-	[button.layer addSublayer:bottomBorder];
+	if(i == 1){	button.frame = CGRectMake(0, 0, tileSize, tileSize); }
+	if(i == 2){	button.frame = CGRectMake(tileSize, 0, tileSize, tileSize); }
+	if(i == 3){	button.frame = CGRectMake(tileSize*2, 0, tileSize, tileSize); }
+	
+	if(i == 4){	button.frame = CGRectMake(0, tileSize, tileSize, tileSize); }
+	if(i == 5){	button.frame = CGRectMake(tileSize, tileSize, tileSize, tileSize); }
+	if(i == 6){	button.frame = CGRectMake(tileSize*2, tileSize, tileSize, tileSize); }
+	
+	if(i == 7){	button.frame = CGRectMake(0, tileSize*2, tileSize, tileSize); }
+	if(i == 8){	button.frame = CGRectMake(tileSize, tileSize*2, tileSize, tileSize); }
+	if(i == 9){	button.frame = CGRectMake(tileSize*2, tileSize*2, tileSize, tileSize); }
 	
 	return button;
 	
 }
 
--(CALayer*)bottomBorder{
-	CALayer *bottomBorder = [CALayer layer];
-	bottomBorder.frame = CGRectMake(0, screenButtonHeight-(screenButtonHeight/10), screenButtonWidth, screenButtonHeight/10);
-	bottomBorder.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2].CGColor;
-	return bottomBorder;
-}
-
-
 -(CGRect)lessonViewFrame {
 	
-	return CGRectMake(0, 0, screen.size.width, screen.size.height/2.5);
+	return CGRectMake(0, 0, screen.size.width, screen.size.height);
 }
 
 -(CGRect)choicesViewFrame {

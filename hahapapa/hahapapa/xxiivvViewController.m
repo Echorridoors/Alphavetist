@@ -91,7 +91,7 @@ AVAudioPlayer *audioPlayerSounds;
 	
 	// Create answer
 	
-	choiceSolution = (arc4random() % 6);
+	choiceSolution = (arc4random() % 9)+1;
 	NSString *choiceSolutionString = gameLessonsArray[userLesson][userLessonMode];
 	NSLog(@"> Less | Solution %d %@",choiceSolution, choiceSolutionString);
 	
@@ -99,16 +99,16 @@ AVAudioPlayer *audioPlayerSounds;
 	
 	NSArray* choiceWrongString = [self gameChoiceCreate];
 	
-	for(int i = 0; i < 6; i++){
+	for(int i = 1; i < 10; i++){
 		UIButton *button = [[UIButton alloc] init];
 		[button addTarget:self action:NSSelectorFromString(@"gameChoiceSelected:") forControlEvents:UIControlEventTouchDown];
 		button.frame = [template choiceButton:i].frame;
 		button.tag = [template choiceButton:i].tag;
 		button.titleLabel.font = [template choiceButton:i].titleLabel.font;
-		button.titleLabel.textColor = [template choiceButton:i].titleLabel.textColor;
 		button.contentEdgeInsets = [template choiceButton:i].contentEdgeInsets;
 		button.alpha = 0;
-		[button.layer addSublayer:[template bottomBorder]];
+		[button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+		
 		[button setTitle: [lesson lessonContent][i][1] forState: UIControlStateNormal];
 		if(i == choiceSolution){
 			[button setTitle:choiceSolutionString forState:UIControlStateNormal];
@@ -116,9 +116,6 @@ AVAudioPlayer *audioPlayerSounds;
 		else{
 			[button setTitle:choiceWrongString[i] forState:UIControlStateNormal];
 		}
-		
-		
-		[button setBackgroundColor:[self gameChoiceColour:button.titleLabel.text]];
 		
 		[self.choicesView addSubview:button];
 	}
@@ -276,15 +273,13 @@ AVAudioPlayer *audioPlayerSounds;
 	float barMaxLesson = [gameLessonsArray count];
 	float barCurrentLesson = userLesson;
 	
-	self.lessonEnglishLabel.frame = CGRectMake(0, screenMargin, screen.size.width, screen.size.height/6);
 	self.lessonEnglishLabel.alpha = 0;
 	
 	[UIView beginAnimations:nil context:nil];
 	[UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
 	[UIView setAnimationDuration:0.5];
-	self.lessonEnglishLabel.frame = CGRectMake(0, screenMargin, screen.size.width, screen.size.height/6);
 	self.lessonEnglishLabel.alpha = 1;
-	self.lessonProgressBar.frame = CGRectMake(3, 3, (screenButtonWidth-6)*(barCurrentLesson/barMaxLesson), (screenMargin/2) -6 );
+	self.lessonProgressBar.frame = CGRectMake(0, 0, (self.lessonProgressView.frame.size.width)*(barCurrentLesson/barMaxLesson), 1 );
 	[UIView commitAnimations];
 	
 	// Animate button fade
@@ -348,24 +343,25 @@ AVAudioPlayer *audioPlayerSounds;
 	template = [[Template alloc] init];
 	
 	self.lessonView.frame = [template lessonViewFrame];
-	self.lessonView.backgroundColor = [UIColor colorWithWhite:0 alpha:0];
+	self.lessonView.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1];
 	
-	self.lessonEnglishLabel.font = [template fontBig];
-	self.lessonEnglishLabel.frame = CGRectMake(0, screenMargin, screen.size.width, screen.size.height/6);
-	self.lessonEnglishLabel.textColor = [UIColor whiteColor];
+	self.lessonEnglishLabel.frame = CGRectMake(0, ((screen.size.height-screen.size.width)/2)-50, screen.size.width, 100);
+	self.lessonEnglishLabel.textColor = [UIColor colorWithWhite:0.1 alpha:1];
 	self.lessonEnglishLabel.text = @"na";
 	
-	self.lessonProgressView.frame = CGRectMake(screenMargin+screenButtonWidth, screenMargin*3, screenButtonWidth, screenMargin/2);
-	self.lessonProgressView.backgroundColor = [UIColor whiteColor];
 	
-	self.lessonProgressBar.frame = CGRectMake(3, 3, 0, (screenMargin/2) -6 );
-	self.lessonProgressBar.backgroundColor = [UIColor blackColor];
 	
-	self.lessonTypeLabel.textColor = [UIColor whiteColor];
-	self.lessonTypeLabel.frame = CGRectMake(0, 0, screen.size.width, screenMargin*8);
+	self.choicesView.frame = CGRectMake(0, screen.size.height-screen.size.width, screen.size.width, screen.size.width);
 	
-	self.choicesView.frame = [template choicesViewFrame];
-	self.choicesView.backgroundColor = [UIColor colorWithWhite:0 alpha:0];
+	
+	self.lessonProgressView.frame = CGRectMake(screen.size.width/3, ((screen.size.height-screen.size.width)/2)+50, screen.size.width/3, 1);
+	self.lessonProgressView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
+	
+	self.lessonProgressBar.frame = CGRectMake(0, 0, 0, 1 );
+	self.lessonProgressBar.backgroundColor = [UIColor whiteColor];
+	
+	self.lessonTypeLabel.textColor = [UIColor colorWithWhite:1 alpha:1];
+	self.lessonTypeLabel.frame = CGRectMake(0, self.lessonProgressView.frame.origin.y+1, screen.size.width, screen.size.width/3/2);
 	
 	self.lessonModeToggle.frame = self.lessonView.frame;
 	
@@ -434,6 +430,11 @@ AVAudioPlayer *audioPlayerSounds;
 	[[NSUserDefaults standardUserDefaults] synchronize];
 	
 	NSLog(@"= User  | Saved.");
+}
+
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
 }
 
 

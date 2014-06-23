@@ -14,7 +14,6 @@
 	-(UIFont*)fontBig;
 	-(UILabel*)test2;
 	-(UIButton*)choiceButton:(int)i;
-	-(CALayer*)bottomBorder;
 @end
 
 UIView *test;
