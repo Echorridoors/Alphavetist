@@ -28,6 +28,9 @@ AVAudioPlayer *audioPlayerSplash;
 	[self splashTemplate];
 	[self splashAnimate];
 	[self audioPlayerSplash:@"splash.tune.wav"];
+	
+	[self apiContact:@"hahapapa":@"analytics":@"launch":@"1"];
+	
 	[NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(splashClose) userInfo:nil repeats:NO];
 }
 
@@ -48,7 +51,6 @@ AVAudioPlayer *audioPlayerSplash;
 	self.splashSupport.alpha = 0;
 	
 	self.btnSplashSupport.frame = CGRectMake(screenMargin, screen.size.height-( screen.size.width-(2*screenMargin) ) , screen.size.width-(2*screenMargin), screen.size.width-(2*screenMargin));
-	
 }
 
 - (void) splashAnimate
@@ -110,6 +112,28 @@ AVAudioPlayer *audioPlayerSplash;
 		[audioPlayerSplash prepareToPlay];
 		[audioPlayerSplash play];
 	}
+}
+
+-(void)apiContact:(NSString*)source :(NSString*)method :(NSString*)term :(NSString*)value
+{
+	NSString *post = [NSString stringWithFormat:@"values={\"term\":\"%@\",\"value\":\"%@\"}",term,value];
+	NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+	
+	NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
+	
+	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+	[request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://api.xxiivv.com/%@/%@",source,method]]];
+	[request setHTTPMethod:@"POST"];
+	[request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+	[request setValue:@"application/x-www-form-urlencoded;charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+	[request setHTTPBody:postData];
+	
+	NSURLResponse *response;
+	NSData *POSTReply = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
+	NSString *theReply = [[NSString alloc] initWithBytes:[POSTReply bytes] length:[POSTReply length] encoding: NSASCIIStringEncoding];
+	NSLog(@"& API  | %@: %@",method, theReply);
+	
+	return;
 }
 
 @end
