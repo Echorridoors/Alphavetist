@@ -136,4 +136,9 @@ AVAudioPlayer *audioPlayerSplash;
 	return;
 }
 
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
 @end
