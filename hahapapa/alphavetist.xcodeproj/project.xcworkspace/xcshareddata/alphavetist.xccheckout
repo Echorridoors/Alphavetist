@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>872120BC-7E69-4B42-A9CC-D388CABB6839</string>
+	<key>IDESourceControlProjectName</key>
+	<string>alphavetist</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>15AAD2401E4A41C2DE79025F487C52DA6209EDE2</key>
+		<string>https://github.com/aliceffekt/alphavetist.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>hahapapa/alphavetist.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>15AAD2401E4A41C2DE79025F487C52DA6209EDE2</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/aliceffekt/alphavetist.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>15AAD2401E4A41C2DE79025F487C52DA6209EDE2</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>15AAD2401E4A41C2DE79025F487C52DA6209EDE2</string>
+			<key>IDESourceControlWCCName</key>
+			<string>alphavetist</string>
+		</dict>
+	</array>
+</dict>
+</plist>

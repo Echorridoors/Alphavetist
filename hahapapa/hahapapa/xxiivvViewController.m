@@ -69,10 +69,10 @@ AVAudioPlayer *audioPlayerSounds;
 	self.lessonEnglishLabel.text = gameLessonsArray[userLesson][0];
 	
 	if(userLessonMode == 1 ){
-		self.lessonTypeLabel.text = @"ひらがな";
+		self.lessonTypeLabel.text = @"Greek";
 	}
 	else{
-		self.lessonTypeLabel.text = @"カタカナ";
+		self.lessonTypeLabel.text = @"Greek";
 	}
 	
 	NSLog(@"- Game | Ready");

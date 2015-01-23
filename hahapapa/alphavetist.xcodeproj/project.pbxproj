@@ -61,14 +61,14 @@
 		03C598D319A79AC2008AFFFE /* icon.76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.76.png; sourceTree = "<group>"; };
 		03C598D419A79AC2008AFFFE /* icon.120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.120.png; sourceTree = "<group>"; };
 		03C598D519A79AC2008AFFFE /* icon.152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.152.png; sourceTree = "<group>"; };
-		03D07C8D17BD085100DE4475 /* hahapapa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hahapapa.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		03D07C8D17BD085100DE4475 /* alphavetist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = alphavetist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03D07C9017BD085100DE4475 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		03D07C9217BD085100DE4475 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		03D07C9417BD085100DE4475 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		03D07C9817BD085100DE4475 /* hahapapa-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "hahapapa-Info.plist"; sourceTree = "<group>"; };
+		03D07C9817BD085100DE4475 /* alphavetist-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "alphavetist-Info.plist"; sourceTree = "<group>"; };
 		03D07C9A17BD085100DE4475 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		03D07C9C17BD085100DE4475 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		03D07C9E17BD085100DE4475 /* hahapapa-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "hahapapa-Prefix.pch"; sourceTree = "<group>"; };
+		03D07C9E17BD085100DE4475 /* alphavetist-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "alphavetist-Prefix.pch"; sourceTree = "<group>"; };
 		03D07C9F17BD085100DE4475 /* xxiivvAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = xxiivvAppDelegate.h; sourceTree = "<group>"; };
 		03D07CA017BD085100DE4475 /* xxiivvAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = xxiivvAppDelegate.m; sourceTree = "<group>"; };
 		03D07CA217BD085100DE4475 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -130,7 +130,7 @@
 		03D07C8E17BD085100DE4475 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				03D07C8D17BD085100DE4475 /* hahapapa.app */,
+				03D07C8D17BD085100DE4475 /* alphavetist.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -173,10 +173,10 @@
 		03D07C9717BD085100DE4475 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				03D07C9817BD085100DE4475 /* hahapapa-Info.plist */,
+				03D07C9817BD085100DE4475 /* alphavetist-Info.plist */,
 				03D07C9917BD085100DE4475 /* InfoPlist.strings */,
 				03D07C9C17BD085100DE4475 /* main.m */,
-				03D07C9E17BD085100DE4475 /* hahapapa-Prefix.pch */,
+				03D07C9E17BD085100DE4475 /* alphavetist-Prefix.pch */,
 				03D07CA217BD085100DE4475 /* Default.png */,
 				03D07CA417BD085100DE4475 /* Default@2x.png */,
 				03D07CA617BD085100DE4475 /* Default-568h@2x.png */,
@@ -187,9 +187,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		03D07C8C17BD085100DE4475 /* hahapapa */ = {
+		03D07C8C17BD085100DE4475 /* alphavetist */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 03D07CB017BD085100DE4475 /* Build configuration list for PBXNativeTarget "hahapapa" */;
+			buildConfigurationList = 03D07CB017BD085100DE4475 /* Build configuration list for PBXNativeTarget "alphavetist" */;
 			buildPhases = (
 				03D07C8917BD085100DE4475 /* Sources */,
 				03D07C8A17BD085100DE4475 /* Frameworks */,
@@ -199,9 +199,9 @@
 			);
 			dependencies = (
 			);
-			name = hahapapa;
+			name = alphavetist;
 			productName = hahapapa;
-			productReference = 03D07C8D17BD085100DE4475 /* hahapapa.app */;
+			productReference = 03D07C8D17BD085100DE4475 /* alphavetist.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -219,7 +219,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 03D07C8817BD085100DE4475 /* Build configuration list for PBXProject "hahapapa" */;
+			buildConfigurationList = 03D07C8817BD085100DE4475 /* Build configuration list for PBXProject "alphavetist" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -231,7 +231,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				03D07C8C17BD085100DE4475 /* hahapapa */,
+				03D07C8C17BD085100DE4475 /* alphavetist */,
 			);
 		};
 /* End PBXProject section */
@@ -370,10 +370,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "hahapapa/hahapapa-Prefix.pch";
-				INFOPLIST_FILE = "hahapapa/hahapapa-Info.plist";
+				GCC_PREFIX_HEADER = "hahapapa/alphavetist-Prefix.pch";
+				INFOPLIST_FILE = "hahapapa/alphavetist-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = alphavetist;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -388,10 +388,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "hahapapa/hahapapa-Prefix.pch";
-				INFOPLIST_FILE = "hahapapa/hahapapa-Info.plist";
+				GCC_PREFIX_HEADER = "hahapapa/alphavetist-Prefix.pch";
+				INFOPLIST_FILE = "hahapapa/alphavetist-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = alphavetist;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -401,7 +401,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		03D07C8817BD085100DE4475 /* Build configuration list for PBXProject "hahapapa" */ = {
+		03D07C8817BD085100DE4475 /* Build configuration list for PBXProject "alphavetist" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				03D07CAE17BD085100DE4475 /* Debug */,
@@ -410,7 +410,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		03D07CB017BD085100DE4475 /* Build configuration list for PBXNativeTarget "hahapapa" */ = {
+		03D07CB017BD085100DE4475 /* Build configuration list for PBXNativeTarget "alphavetist" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				03D07CB117BD085100DE4475 /* Debug */,
