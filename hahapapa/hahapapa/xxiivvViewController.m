@@ -375,8 +375,10 @@ AVAudioPlayer *audioPlayerSounds;
 	self.lessonTypeLabel.textColor = [UIColor colorWithWhite:1 alpha:1];
 	self.lessonTypeLabel.frame = CGRectMake(0, self.lessonProgressView.frame.origin.y+1, screen.size.width, screen.size.width/3/2);
 	
-	self.lessonModeToggle.frame = self.lessonView.frame;
-	
+    self.lessonModeToggle.frame = CGRectMake(0, self.lessonProgressView.frame.origin.y, screen.size.width, screen.size.width/3/2);
+    
+    self.lessonCaseToggle.frame = CGRectMake(0, self.lessonProgressView.frame.origin.y - (screen.size.width/3), screen.size.width, screen.size.width/3);
+    
 	self.feedbackView.frame = CGRectMake(0, 0, screen.size.width, screen.size.height-screen.size.width);
 }
 
@@ -395,6 +397,9 @@ AVAudioPlayer *audioPlayerSounds;
 	
 	[self gameStart];
 	
+}
+
+- (IBAction)lessonCaseToggle:(id)sender {
 }
 
 -(void)audioPlayerSounds:(NSString *)filename{
