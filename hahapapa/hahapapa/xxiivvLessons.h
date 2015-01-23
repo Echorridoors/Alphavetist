@@ -9,6 +9,7 @@
 #import "xxiivvViewController.h"
 
 @interface Lesson : xxiivvViewController
+    -(NSArray*)lessonsList;
 	-(NSArray*)lessonContent;
 	-(int)nextLesson;
 @end

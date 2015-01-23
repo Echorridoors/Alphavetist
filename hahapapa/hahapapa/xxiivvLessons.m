@@ -39,9 +39,14 @@
 	return 1;
 }
 
+-(NSArray*)lessonsList
+{
+    return @[@"Japanese",@"Russian",@"Greek",@"Hebrew"];
+}
+
 - (NSArray*)lessonContent
 {
-    return [self lessonHebrew];
+    return [self lessonJapanese];
 }
 
 - (NSArray*)lessonHebrew

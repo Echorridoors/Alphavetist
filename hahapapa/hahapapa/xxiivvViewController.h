@@ -41,4 +41,4 @@ int userLessonComplete;
 int choiceSolution;
 
 int modeIsCapitalized;
-int modeIdLanguage;
+int modeIsLanguage;

@@ -36,7 +36,10 @@ AVAudioPlayer *audioPlayerSounds;
     [super didReceiveMemoryWarning];
 }
 
--(void)start {
+-(void)start
+{
+    modeIsLanguage = 0;
+    
 	[self lessonStart];
 	[self templateStart];
 
@@ -64,16 +67,18 @@ AVAudioPlayer *audioPlayerSounds;
 	
 }
 
--(void)gameReady {
-	
-	self.lessonEnglishLabel.text = gameLessonsArray[userLesson][0];
-	
-	if(userLessonMode == 1 ){
-		self.lessonTypeLabel.text = @"Hebrew";
-	}
-	else{
-		self.lessonTypeLabel.text = @"Hebrew";
-	}
+-(void)gameReady
+{
+    NSLog(@"%d",modeIsCapitalized);
+    
+    if( modeIsCapitalized == 1 ){
+        self.lessonEnglishLabel.text = [gameLessonsArray[userLesson][0] capitalizedString];
+    }
+    else{
+        self.lessonEnglishLabel.text = gameLessonsArray[userLesson][0];
+    }
+    
+    self.lessonTypeLabel.text = [[lesson lessonsList] objectAtIndex:modeIsLanguage];
 	
 	NSLog(@"- Game | Ready");
 	
@@ -92,7 +97,7 @@ AVAudioPlayer *audioPlayerSounds;
 	// Create answer
 	
 	choiceSolution = (arc4random() % 9)+1;
-	NSString *choiceSolutionString = gameLessonsArray[userLesson][userLessonMode];
+	NSString *choiceSolutionString = gameLessonsArray[userLesson][modeIsCapitalized+1];
 	NSLog(@"> Less | Solution %d %@",choiceSolution, choiceSolutionString);
 	
 	// Create wrongs
@@ -135,16 +140,16 @@ AVAudioPlayer *audioPlayerSounds;
 	
 	NSLog(@"> Game | Choice Correct");
 	
-	
+	// TO DO
 	if( userLesson > 69 ){
 		[self audioPlayerSounds:@"fx.completed.wav"];
 		userLessonComplete += 1;
 		userLesson = 0;
-		if( userLessonMode == 1){
-			userLessonMode = 2;
+		if( modeIsCapitalized == 1){
+			modeIsCapitalized = 2;
 		}
 		else{
-			userLessonMode = 1;
+			modeIsCapitalized = 1;
 		}
 	}
 	else{
@@ -202,7 +207,7 @@ AVAudioPlayer *audioPlayerSounds;
 			k += 1;
 		}
 		if( k > [gameLessonsArray count]){ k = 10; }
-		[choiceWrongString addObject:gameLessonsArray[k][userLessonMode]];
+		[choiceWrongString addObject:gameLessonsArray[k][modeIsCapitalized+1]];
 	}
 	return choiceWrongString;
 }
@@ -253,7 +258,6 @@ AVAudioPlayer *audioPlayerSounds;
 	self.optionSelector.backgroundColor = [UIColor colorWithWhite:1 alpha:0];
 	[UIView commitAnimations];
 	
-	
 	if(choiceId == choiceSolution){
 		[self gameChoiceCorrect];	
 	}
@@ -271,7 +275,7 @@ AVAudioPlayer *audioPlayerSounds;
 	
 	NSLog(@"> User | Created");
 	userLesson = 0;
-	userLessonMode = 1;
+	modeIsCapitalized = 1;
 	userLessonComplete = 0;
 }
 
@@ -285,12 +289,17 @@ AVAudioPlayer *audioPlayerSounds;
 	float barCurrentLesson = userLesson;
 	
 	self.lessonEnglishLabel.alpha = 0;
-	
+    
+    self.lessonTypeLabel.frame = CGRectMake(0, self.lessonProgressView.frame.origin.y-10, screen.size.width, screen.size.width/3/2);
+    self.lessonTypeLabel.alpha = 0;
+    
 	[UIView beginAnimations:nil context:nil];
 	[UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
 	[UIView setAnimationDuration:0.5];
 	self.lessonEnglishLabel.alpha = 1;
-	self.lessonProgressBar.frame = CGRectMake(0, 0, (self.lessonProgressView.frame.size.width)*(barCurrentLesson/barMaxLesson), 1 );
+    self.lessonProgressBar.frame = CGRectMake(0, 0, (self.lessonProgressView.frame.size.width)*(barCurrentLesson/barMaxLesson), 1 );
+    self.lessonTypeLabel.frame = CGRectMake(0, self.lessonProgressView.frame.origin.y+1, screen.size.width, screen.size.width/3/2);
+    self.lessonTypeLabel.alpha = 1;
 	[UIView commitAnimations];
 	
 	// Animate button fade
@@ -307,8 +316,8 @@ AVAudioPlayer *audioPlayerSounds;
 	
 }
 
--(void)templateChoiceCorrectAnimation {
-	
+-(void)templateChoiceCorrectAnimation
+{
 	self.feedbackView.backgroundColor = [UIColor whiteColor];
 	
 	self.feedbackView.alpha = 0.4;
@@ -318,16 +327,12 @@ AVAudioPlayer *audioPlayerSounds;
 	[UIView setAnimationDuration:0.3];
 	self.feedbackView.alpha = 0;
 	[UIView commitAnimations];
-	
 }
 
 
--(void)templateChoiceIncorrectAnimation {
-	
-	NSLog(@"!!");
-	
+-(void)templateChoiceIncorrectAnimation
+{
 	self.feedbackView.backgroundColor = [UIColor redColor];
-	
 	self.feedbackView.alpha = 1;
 	
 	[UIView beginAnimations:nil context:nil];
@@ -335,7 +340,6 @@ AVAudioPlayer *audioPlayerSounds;
 	[UIView setAnimationDuration:0.6];
 	self.feedbackView.alpha = 0;
 	[UIView commitAnimations];
-	
 }
 
 # pragma mark To clean -
@@ -382,24 +386,33 @@ AVAudioPlayer *audioPlayerSounds;
 	self.feedbackView.frame = CGRectMake(0, 0, screen.size.width, screen.size.height-screen.size.width);
 }
 
-- (IBAction)lessonModeToggle:(id)sender {
-	
-	NSLog(@"> Mode | Toggle");
-	
-	if( userLessonMode == 1 ){
-		userLessonMode = 2;
-	}
-	else{
-		userLessonMode = 1;
-	}
-	
-	userLesson = 0;
-	
-	[self gameStart];
-	
+- (IBAction)lessonModeToggle:(id)sender
+{
+	NSLog(@"> Mode | Language Toggle");
+    
+    modeIsLanguage = modeIsLanguage + 1;
+    
+    if( modeIsLanguage == [[lesson lessonsList] count] ){
+        modeIsLanguage = 0;
+    }
+    
+    [self gameStart];
+    
+    NSLog(@"Current: %d All:%@",modeIsLanguage,[lesson lessonsList]);
 }
 
-- (IBAction)lessonCaseToggle:(id)sender {
+- (IBAction)lessonCaseToggle:(id)sender
+{
+    NSLog(@"> Mode | Toggle Case");
+    
+    if( modeIsCapitalized == 1 ){
+        modeIsCapitalized = 0;
+    }
+    else{
+        modeIsCapitalized = 1;
+    }
+    
+    [self gameStart];
 }
 
 -(void)audioPlayerSounds:(NSString *)filename{
