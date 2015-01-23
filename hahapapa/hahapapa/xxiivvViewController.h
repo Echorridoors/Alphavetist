@@ -35,7 +35,6 @@ float screenButtonHeight;
 int userLesson;
 int userLessonHiragana;
 int userLessonKatakana;
-int userLessonComplete;
 
 int choiceSolution;
 

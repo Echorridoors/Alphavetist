@@ -24,13 +24,13 @@ AVAudioPlayer *audioPlayerSplash;
 
 -(void)start
 {
-	supportUrl = @"http://wiki.xxiivv.com/Hahapapa";
+	supportUrl = @"http://wiki.xxiivv.com/Alphavetist";
 	
 	[self splashTemplate];
 	[self splashAnimate];
 	[self audioPlayerSplash:@"splash.tune.wav"];
 	
-	[self apiContact:@"hahapapa":@"analytics":@"launch":@"1"];
+	[self apiContact:@"alphavetist":@"analytics":@"launch":@"1"];
 	
 	[NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(splashClose) userInfo:nil repeats:NO];
 }
