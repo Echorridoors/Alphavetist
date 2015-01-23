@@ -114,7 +114,7 @@ AVAudioPlayer *audioPlayerSounds;
 		button.alpha = 0;
 		[button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 		
-		[button setTitle: [lesson lessonContent][i][1] forState: UIControlStateNormal];
+		[button setTitle: [lesson lessonContent:modeIsLanguage][i][1] forState: UIControlStateNormal];
 		if(i == choiceSolution){
 			[button setTitle:choiceSolutionString forState:UIControlStateNormal];
 		}
@@ -347,7 +347,7 @@ AVAudioPlayer *audioPlayerSounds;
 -(void)lessonStart {
 	NSLog(@"> Less | Start");
 	lesson = [[Lesson alloc] init];
-	gameLessonsArray = [lesson lessonContent];
+	gameLessonsArray = [lesson lessonContent:modeIsLanguage];
 }
 
 -(void)templateStart {
@@ -390,6 +390,8 @@ AVAudioPlayer *audioPlayerSounds;
 {
 	NSLog(@"> Mode | Language Toggle");
     
+    modeIsCapitalized = 0;
+    userLesson = 0;
     modeIsLanguage = modeIsLanguage + 1;
     
     if( modeIsLanguage == [[lesson lessonsList] count] ){
@@ -397,8 +399,7 @@ AVAudioPlayer *audioPlayerSounds;
     }
     
     [self gameStart];
-    
-    NSLog(@"Current: %d All:%@",modeIsLanguage,[lesson lessonsList]);
+    [self gameStart];
 }
 
 - (IBAction)lessonCaseToggle:(id)sender

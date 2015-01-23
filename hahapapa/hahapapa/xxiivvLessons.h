@@ -10,7 +10,7 @@
 
 @interface Lesson : xxiivvViewController
     -(NSArray*)lessonsList;
-	-(NSArray*)lessonContent;
+- (NSArray*)lessonContent :(int)lessonId;
 	-(int)nextLesson;
 @end
 

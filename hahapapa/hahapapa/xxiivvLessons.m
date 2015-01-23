@@ -44,8 +44,17 @@
     return @[@"Japanese",@"Russian",@"Greek",@"Hebrew"];
 }
 
-- (NSArray*)lessonContent
+- (NSArray*)lessonContent :(int)lessonId
 {
+    
+    NSString* language = [[self lessonsList] objectAtIndex:lessonId];
+    
+    NSLog(@"Loading lesson: %d %@",lessonId,language);
+    
+    if( [language isEqualToString:@"Japanese"] ){ return [self lessonJapanese]; }
+    else if( [language isEqualToString:@"Russian"] ){ return [self lessonRussian]; }
+    else if( [language isEqualToString:@"Greek"] ){ return [self lessonGreek]; }
+    else if( [language isEqualToString:@"Hebrew"] ){ return [self lessonHebrew]; }
     return [self lessonJapanese];
 }
 
