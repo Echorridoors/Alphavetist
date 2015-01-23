@@ -39,10 +39,9 @@
 	return 1;
 }
 
-- (NSArray*)lessonContent{
-    
+- (NSArray*)lessonContent
+{
     return [self lessonHebrew];
-
 }
 
 - (NSArray*)lessonHebrew
