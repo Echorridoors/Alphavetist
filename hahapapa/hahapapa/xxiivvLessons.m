@@ -41,7 +41,7 @@
 
 -(NSArray*)lessonsList
 {
-    return @[@"Japanese",@"Russian",@"Greek",@"Hebrew"];
+    return @[@"Japanese",@"Russian",@"Greek",@"Hebrew",@"Inuktitut"];
 }
 
 - (NSArray*)lessonContent :(int)lessonId
@@ -52,7 +52,92 @@
     else if( [language isEqualToString:@"Russian"] ){ return [self lessonRussian]; }
     else if( [language isEqualToString:@"Greek"] ){ return [self lessonGreek]; }
     else if( [language isEqualToString:@"Hebrew"] ){ return [self lessonHebrew]; }
+    else if( [language isEqualToString:@"Inuktitut"] ){ return [self lessonInuktitut]; }
     return [self lessonJapanese];
+}
+
+
+- (NSArray*)lessonInuktitut
+{
+    gameLessonsArray = @[
+@[@"ai", @"ᐁ", @"ᐁ"],
+@[@"pai", @"ᐯ", @"ᐯ"],
+@[@"tai", @"ᑌ", @"ᑌ"],
+@[@"kai", @"ᑫ", @"ᑫ"],
+@[@"gai", @"ᒉ", @"ᒉ"],
+
+@[@"mai", @"ᒣ", @"ᒣ"],
+@[@"nai", @"ᓀ", @"ᓀ"],
+@[@"sai", @"ᓭ", @"ᓭ"],
+@[@"lai", @"ᓓ", @"ᓓ"],
+@[@"jai", @"ᔦ", @"ᔦ"],
+
+@[@"vai", @"ᕓ", @"ᕓ"],
+@[@"rai", @"ᕃ", @"ᕃ"],
+@[@"qai", @"ᙯ", @"ᙯ"],
+@[@"ngai", @"ᙰ", @"ᙰ"],
+
+@[@"i", @"ᐃ", @"ᐄ"],
+@[@"pi", @"ᐱ", @"ᐲ"],
+@[@"ti", @"ᑎ", @"ᑏ"],
+@[@"ki", @"ᑭ", @"ᑮ"],
+@[@"gi", @"ᒋ", @"ᒌ"],
+
+@[@"mi", @"ᒥ", @"ᒦ"],
+@[@"ni", @"ᓂ", @"ᓃ"],
+@[@"si", @"ᓯ", @"ᓰ"],
+@[@"li", @"ᓕ", @"ᓖ"],
+@[@"ji", @"ᔨ", @"ᔩ"],
+
+@[@"vi", @"ᕕ", @"ᕖ"],
+@[@"ri", @"ᕆ", @"ᕇ"],
+@[@"qi", @"ᕿ", @"ᖀ"],
+@[@"ngi", @"ᖏ", @"ᖐ"],
+@[@"nngi", @"ᙱ", @"ᙲ"],
+
+@[@"łi", @"ᖠ", @"ᖡ"],
+@[@"u", @"ᐅ", @"ᐆ"],
+@[@"pu", @"ᐳ", @"ᐴ"],
+@[@"tu", @"ᑐ", @"ᑑ"],
+@[@"ku", @"ᑯ", @"ᑰ"],
+
+@[@"gu", @"ᒍ", @"ᒎ"],
+@[@"mu", @"ᒧ", @"ᒨ"],
+@[@"nu", @"ᓄ", @"ᓅ"],
+@[@"su", @"ᓱ", @"ᓲ"],
+@[@"lu", @"ᓗ", @"ᓘ"],
+
+@[@"ju", @"ᔪ", @"ᔫ"],
+@[@"vu", @"ᕗ", @"ᕘ"],
+@[@"ru", @"ᕈ", @"ᕉ"],
+@[@"qu", @"ᖁ", @"ᖂ"],
+@[@"ngu", @"ᖑ", @"ᖒ"],
+
+@[@"nngu", @"ᙳ", @"ᙴ"],
+@[@"łu", @"ᖢ", @"ᖣ"],
+@[@"a", @"ᐊ", @"ᐋ"],
+@[@"pa", @"ᐸ", @"ᐹ"],
+@[@"ta", @"ᑕ", @"ᑖ"],
+
+@[@"ka", @"ᑲ", @"ᑳ"],
+@[@"ga", @"ᒐ", @"ᒑ"],
+@[@"ma", @"ᒪ", @"ᒫ"],
+@[@"na", @"ᓇ", @"ᓈ"],
+@[@"sa", @"ᓴ", @"ᓵ"],
+
+@[@"la", @"ᓚ", @"ᓛ"],
+@[@"ja", @"ᔭ", @"ᔮ"],
+@[@"va", @"ᕙ", @"ᕚ"],
+@[@"ra", @"ᕋ", @"ᕌ"],
+@[@"qa", @"ᖃ", @"ᖄ"],
+
+@[@"nga", @"ᖓ", @"ᖔ"],
+@[@"nnga", @"ᙵ", @"ᙶ"],
+@[@"ła", @"ᖤ", @"ᖥ"]
+
+];
+    
+    return gameLessonsArray;
 }
 
 - (NSArray*)lessonHebrew
@@ -89,7 +174,6 @@
     
     return gameLessonsArray;
 }
-
 
 - (NSArray*)lessonGreek
 {
