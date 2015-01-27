@@ -127,7 +127,6 @@ AVAudioPlayer *audioPlayerSounds;
 		[button setTitle: [lesson lessonContent:modeIsLanguage][i][1] forState: UIControlStateNormal];
         if(i == choiceSolution){
             [button setTitle:choiceSolutionString forState:UIControlStateNormal];
-            [button setTitle:@"!" forState:UIControlStateNormal];
 		}
 		else{
 			[button setTitle:choiceWrongString[i] forState:UIControlStateNormal];
@@ -200,6 +199,7 @@ AVAudioPlayer *audioPlayerSounds;
     }
     
     NSMutableArray *returnArray = [[NSMutableArray alloc] initWithCapacity:11];
+    
     // Add to return
     for ( uint count = 10; count > 0; --count){
         [returnArray addObject:randSequence1[count][modeIsCapitalized+1]];
