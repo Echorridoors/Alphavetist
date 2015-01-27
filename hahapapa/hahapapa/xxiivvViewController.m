@@ -110,9 +110,9 @@ AVAudioPlayer *audioPlayerSounds;
 	NSLog(@"> Less | Solution %d %@",choiceSolution, choiceSolutionString);
 	
 	// Create wrongs
-	
+    
 	NSArray* choiceWrongString = [self gameChoiceCreate];
-	
+    
 	for(int i = 1; i < 10; i++){
 		UIButton *button = [[UIButton alloc] init];
 		[button addTarget:self action:NSSelectorFromString(@"gameChoiceSelected:") forControlEvents:UIControlEventTouchDown];
@@ -123,9 +123,11 @@ AVAudioPlayer *audioPlayerSounds;
 		button.alpha = 0;
 		[button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 		
+        
 		[button setTitle: [lesson lessonContent:modeIsLanguage][i][1] forState: UIControlStateNormal];
-		if(i == choiceSolution){
-			[button setTitle:choiceSolutionString forState:UIControlStateNormal];
+        if(i == choiceSolution){
+            [button setTitle:choiceSolutionString forState:UIControlStateNormal];
+            [button setTitle:@"!" forState:UIControlStateNormal];
 		}
 		else{
 			[button setTitle:choiceWrongString[i] forState:UIControlStateNormal];
@@ -188,34 +190,22 @@ AVAudioPlayer *audioPlayerSounds;
 
 -(NSMutableArray*)gameChoiceCreate
 {
-	NSMutableArray *randSequence = [[NSMutableArray alloc] initWithCapacity:11];
-	
-	int choiceFiller = 0;
-	
-	if( userLesson < 11 ){
-		choiceFiller = 15;
-	}
-	
-	for (int ii = 1; ii < userLesson+choiceFiller; ++ii){
-		[randSequence addObject:[NSNumber numberWithInt:ii]];
-	}
-	for (int ii = [randSequence count]-1; ii > 0; --ii){
-		int r = arc4random() % (ii + 1);
-		[randSequence exchangeObjectAtIndex:ii withObjectAtIndex:r];
-	}
-	
-	NSMutableArray *choiceWrongString = [[NSMutableArray alloc] initWithCapacity:11];
-	int mod = 0;
-	for (NSString* key in randSequence) {
-		int k = [key intValue] + mod;
-		if( k == userLesson ){
-			mod = 1;
-			k += 1;
-		}
-		if( k > [gameLessonsArray count]){ k = 10; }
-		[choiceWrongString addObject:gameLessonsArray[k][modeIsCapitalized+1]];
-	}
-	return choiceWrongString;
+    // Limit Array to current lesson
+    NSMutableArray *randSequence1 = [[NSMutableArray alloc] initWithArray:gameLessonsArray];
+    
+    for ( uint i1 = [randSequence1 count] - 1; i1 > 0; --i1){
+        int from = arc4random() % [randSequence1 count];
+        int to = arc4random() % [randSequence1 count];
+        [randSequence1 exchangeObjectAtIndex:from withObjectAtIndex:to];
+    }
+    
+    NSMutableArray *returnArray = [[NSMutableArray alloc] initWithCapacity:11];
+    // Add to return
+    for ( uint count = 10; count > 0; --count){
+        [returnArray addObject:randSequence1[count][modeIsCapitalized+1]];
+    }
+    
+	return returnArray;
 }
 
 -(void)gameChoiceSelected:(UIButton*)sender
