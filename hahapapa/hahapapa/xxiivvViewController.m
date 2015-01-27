@@ -183,7 +183,9 @@ AVAudioPlayer *audioPlayerSounds;
 	[self templateChoiceIncorrectAnimation];
 	
 	userLesson -= 6;
-	userLesson = abs(userLesson);
+    if (userLesson < 0) {
+        userLesson = 0;
+    }
 }
 
 
