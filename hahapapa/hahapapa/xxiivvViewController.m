@@ -111,7 +111,7 @@ AVAudioPlayer *audioPlayerSounds;
 	
 	// Create wrongs
     
-	NSArray* choiceWrongString = [self gameChoiceCreate];
+    NSArray* choiceWrongString = [self gameChoiceCreate:choiceSolutionString];
     
 	for(int i = 1; i < 10; i++){
 		UIButton *button = [[UIButton alloc] init];
@@ -123,7 +123,6 @@ AVAudioPlayer *audioPlayerSounds;
 		button.alpha = 0;
 		[button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 		
-        
 		[button setTitle: [lesson lessonContent:modeIsLanguage][i][1] forState: UIControlStateNormal];
         if(i == choiceSolution){
             [button setTitle:choiceSolutionString forState:UIControlStateNormal];
@@ -187,10 +186,20 @@ AVAudioPlayer *audioPlayerSounds;
 }
 
 
--(NSMutableArray*)gameChoiceCreate
+-(NSMutableArray*)gameChoiceCreate :(NSString*)answer
 {
     // Limit Array to current lesson
-    NSMutableArray *randSequence1 = [[NSMutableArray alloc] initWithArray:gameLessonsArray];
+    NSMutableArray *randSequence1 = [[NSMutableArray alloc] initWithCapacity:20];
+    
+    NSArray *item;
+    
+    for (item in gameLessonsArray) {
+        if( item[modeIsCapitalized+1] != answer ){
+            [randSequence1 addObject:item];
+        }
+    }
+    
+    [randSequence1 removeObjectIdenticalTo:answer];
     
     for ( uint i1 = [randSequence1 count] - 1; i1 > 0; --i1){
         int from = arc4random() % [randSequence1 count];
