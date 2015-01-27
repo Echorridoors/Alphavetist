@@ -41,7 +41,7 @@
 
 -(NSArray*)lessonsList
 {
-    return @[@"Japanese",@"Russian",@"Greek",@"Hebrew",@"Inuktitut",@"Arabic"];
+    return @[@"Japanese",@"Russian",@"Greek",@"Hebrew",@"Inuktitut",@"Arabic",@"Korean"];
 }
 
 - (NSArray*)lessonContent :(int)lessonId
@@ -54,6 +54,7 @@
     else if( [language isEqualToString:@"Hebrew"] ){ return [self lessonHebrew]; }
     else if( [language isEqualToString:@"Inuktitut"] ){ return [self lessonInuktitut]; }
     else if( [language isEqualToString:@"Arabic"] ){ return [self lessonArabic]; }
+    else if( [language isEqualToString:@"Korean"] ){ return [self lessonKorean]; }
     return [self lessonJapanese];
 }
 
@@ -388,6 +389,60 @@ gameLessonsArray = @[
     ];
 	
 	return gameLessonsArray;
+
+}
+
+- (NSArray*)lessonKorean{
+    gameLessonsArray = @[
+    @[@"g", @"ㄱ", @"ㄱ"],
+    @[@"n", @"ㄴ", @"ㄴ"],
+    @[@"d", @"ㄷ", @"ㄷ"],
+    @[@"r", @"ㄹ", @"ㄹ"],
+    @[@"m", @"ㅁ", @"ㅁ"],
+    @[@"b", @"ㅂ", @"ㅂ"],
+    @[@"s", @"ㅅ", @"ㅅ"],
+    @[@"-", @"ㅇ", @"ㅇ"],
+    @[@"j", @"ㅈ", @"ㅈ"],
+    @[@"h", @"ㅎ", @"ㅎ"],
+
+    @[@"k", @"ㅋ", @"ㅋ"],
+    @[@"t", @"ㅌ", @"ㅌ"],
+    @[@"p", @"ㅍ", @"ㅍ"],
+    @[@"ch", @"ㅊ", @"ㅊ"],
+
+    @[@"kk", @"ㄲ", @"ㄲ"],
+    @[@"tt", @"ㄸ", @"ㄸ"],
+    @[@"pp", @"ㅃ", @"ㅃ"],
+    @[@"ss", @"ㅆ", @"ㅆ"],
+    @[@"jj", @"ㅉ", @"ㅉ"],
+
+    @[@"a", @"ㅏ", @"ㅏ"],
+    @[@"ya", @"ㅑ", @"ㅑ"],
+    @[@"eo", @"ㅓ", @"ㅓ"],
+    @[@"yeo", @"ㅕ", @"ㅕ"],
+    @[@"o", @"ㅗ", @"ㅗ"],
+    @[@"yo", @"ㅛ", @"ㅛ"],
+    @[@"u", @"ㅜ", @"ㅜ"],
+    @[@"yu", @"ㅠ", @"ㅠ"],
+    @[@"eu", @"ㅡ", @"ㅡ"],
+    @[@"i", @"ㅣ", @"ㅣ"],
+
+    @[@"ae", @"ㅐ", @"ㅐ"],
+    @[@"yae", @"ㅒ", @"ㅒ"],
+    @[@"e", @"ㅔ", @"ㅔ"],
+    @[@"ye", @"ㅖ", @"ㅖ"],
+    @[@"oe", @"ㅚ", @"ㅚ"],
+    @[@"wi", @"ㅟ", @"ㅟ"],
+    @[@"ui", @"ㅢ", @"ㅢ"],
+
+    @[@"wa", @"ㅘ", @"ㅘ"],
+    @[@"wo", @"ㅝ", @"ㅝ"],
+
+    @[@"wae", @"ㅙ", @"ㅙ"],
+    @[@"we", @"ㅞ", @"ㅞ"]
+    ];
+
+    return gameLessonsArray;
 
 }
 
