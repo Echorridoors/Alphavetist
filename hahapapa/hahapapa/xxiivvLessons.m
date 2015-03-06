@@ -41,7 +41,7 @@
 
 -(NSArray*)lessonsList
 {
-    return @[@"Japanese",@"Russian",@"Greek",@"Hebrew",@"Inuktitut",@"Arabic",@"Korean"];
+    return @[@"Japanese",@"Morse",@"Russian",@"Greek",@"Hebrew",@"Inuktitut",@"Arabic",@"Korean"];
 }
 
 - (NSArray*)lessonContent :(int)lessonId
@@ -53,8 +53,9 @@
     else if( [language isEqualToString:@"Greek"] ){ return [self lessonGreek]; }
     else if( [language isEqualToString:@"Hebrew"] ){ return [self lessonHebrew]; }
     else if( [language isEqualToString:@"Inuktitut"] ){ return [self lessonInuktitut]; }
-    else if( [language isEqualToString:@"Arabic"] ){ return [self lessonArabic]; }
-    else if( [language isEqualToString:@"Korean"] ){ return [self lessonKorean]; }
+	else if( [language isEqualToString:@"Arabic"] ){ return [self lessonArabic]; }
+	else if( [language isEqualToString:@"Korean"] ){ return [self lessonKorean]; }
+	else if( [language isEqualToString:@"Morse"] ){ return [self lessonMorse]; }
     return [self lessonJapanese];
 }
 
@@ -443,8 +444,41 @@ gameLessonsArray = @[
     ];
 
     return gameLessonsArray;
-
 }
+
+
+- (NSArray*)lessonMorse{
+	gameLessonsArray = @[
+	@[@"a", @"∙-", @"∙-"],
+	@[@"b", @"-∙∙∙", @"-∙∙∙"],
+	@[@"c", @"-∙-∙", @"-∙-∙"],
+	@[@"d", @"-∙∙", @"-∙∙"],
+	@[@"e", @"∙", @"∙"],
+	@[@"f", @"∙∙-∙", @"∙∙-∙"],
+	@[@"g", @"--∙", @"--∙"],
+	@[@"h", @"∙∙∙∙", @"∙∙∙∙"],
+	@[@"i", @"∙∙", @"∙∙"],
+	@[@"j", @"∙---", @"∙---"],
+	@[@"k", @"-∙-", @"-∙-"],
+	@[@"l", @"∙-∙∙", @"∙-∙∙"],
+	@[@"m", @"--", @"--"],
+	@[@"n", @"-∙", @"-∙"],
+	@[@"o", @"---", @"---"],
+	@[@"p", @"∙--∙", @"∙--∙"],
+	@[@"q", @"--∙-", @"--∙-"],
+	@[@"r", @"∙-∙", @"∙-∙"],
+	@[@"s", @"∙∙∙", @"∙∙∙"],
+	@[@"t", @"-", @"-"],
+	@[@"u", @"∙∙-", @"∙∙-"],
+	@[@"v", @"∙∙∙-", @"∙∙∙-"],
+	@[@"w", @"∙--", @"∙--"],
+	@[@"x", @"-∙∙-", @"-∙∙-"],
+	@[@"y", @"-∙--", @"-∙--"],
+	@[@"z", @"--∙∙", @"--∙∙"]
+	];
+
+	return gameLessonsArray;
+	}
 
 
 @end

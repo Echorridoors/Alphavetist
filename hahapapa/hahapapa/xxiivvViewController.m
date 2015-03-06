@@ -123,6 +123,13 @@ AVAudioPlayer *audioPlayerSounds;
 		button.alpha = 0;
 		[button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 		
+		
+		if( [self.lessonTypeLabel.text isEqualToString:@"Morse"] ){
+			button.titleLabel.adjustsFontSizeToFitWidth = TRUE;
+			[button.titleLabel setMinimumScaleFactor:0.5];
+			[button.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:40]];
+		}
+		
 		[button setTitle: [lesson lessonContent:modeIsLanguage][i][1] forState: UIControlStateNormal];
         if(i == choiceSolution){
             [button setTitle:choiceSolutionString forState:UIControlStateNormal];
