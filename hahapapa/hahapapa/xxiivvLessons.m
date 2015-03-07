@@ -41,7 +41,7 @@
 
 -(NSArray*)lessonsList
 {
-    return @[@"Japanese",@"Morse",@"Russian",@"Greek",@"Hebrew",@"Inuktitut",@"Arabic",@"Korean"];
+    return @[@"Japanese",@"Russian",@"Greek",@"Hebrew",@"Inuktitut",@"Arabic",@"Korean",@"Morse"];
 }
 
 - (NSArray*)lessonContent :(int)lessonId
