@@ -69,13 +69,9 @@ AVAudioPlayer *audioPlayerSounds;
 }
 
 -(void)gameReady
-{    
-    if( modeIsCapitalized == 1 ){
-        self.lessonEnglishLabel.text = gameLessonsArray[userLesson][0];
-    }
-    else{
-        self.lessonEnglishLabel.text = [gameLessonsArray[userLesson][0] capitalizedString];
-    }
+{
+	self.lessonEnglishLabel.text = [gameLessonsArray[userLesson][0] uppercaseString];
+	self.lessonEnglishCaseLabel.text = gameLessonsArray[userLesson][0];
 	
 	NSLog(@"- Game | Ready");
 	
@@ -261,6 +257,7 @@ AVAudioPlayer *audioPlayerSounds;
 	}
 	if( scrollView.tag == 802 ){
 		modeIsLanguage = option;
+		[self gameStart];
 		[self gameStart];
 	}
 	
