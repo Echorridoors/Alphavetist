@@ -22,6 +22,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *lessonEnglishLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lessonEnglishCaseLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lessonEnglishAnswerLabel;
+@property (weak, nonatomic) IBOutlet UILabel *lessonEnglishCaseAnswerLabel;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *languageSelectionView;
 
@@ -42,4 +43,5 @@ int userLessonKatakana;
 int choiceSolution;
 
 int modeIsCapitalized;
+int modeIsAnswer;
 int modeIsLanguage;

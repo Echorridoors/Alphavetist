@@ -55,6 +55,13 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="English" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.40000000596046448" id="VfV-PO-u03" userLabel="lessonEnglishCaseAnswerLabel">
+                                                <rect key="frame" x="-23" y="54" width="286" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Thin" family="Apple SD Gothic Neo" pointSize="100"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <connections>
                                             <outlet property="delegate" destination="2" id="Kyc-iZ-et2"/>
@@ -93,6 +100,7 @@
                         <outlet property="feedbackView" destination="snF-xa-gQ0" id="lOL-Je-gmJ"/>
                         <outlet property="languageSelectionView" destination="n8B-vY-pEU" id="L9z-rl-vSs"/>
                         <outlet property="lessonEnglishAnswerLabel" destination="aCH-h3-ftK" id="O1D-hL-1d8"/>
+                        <outlet property="lessonEnglishCaseAnswerLabel" destination="VfV-PO-u03" id="qRV-Zp-PwQ"/>
                         <outlet property="lessonEnglishCaseLabel" destination="o6n-Ci-Skz" id="oBa-eQ-ayD"/>
                         <outlet property="lessonEnglishLabel" destination="Pe1-uj-e7m" id="nfG-tf-yaL"/>
                         <outlet property="lessonProgressBar" destination="EC1-Di-ExK" id="ue1-6O-KVl"/>

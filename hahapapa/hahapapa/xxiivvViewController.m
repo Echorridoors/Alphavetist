@@ -54,7 +54,6 @@ AVAudioPlayer *audioPlayerSounds;
 -(void)gameStart {
 	
 	NSLog(@"- Game | Start");
-	userLesson = 0;
 	[self gameChoicesRemove];
 	[self gamePrepare];
 }
@@ -72,11 +71,12 @@ AVAudioPlayer *audioPlayerSounds;
 {
 	self.lessonEnglishLabel.text = [gameLessonsArray[userLesson][0] uppercaseString];
 	self.lessonEnglishCaseLabel.text = gameLessonsArray[userLesson][0];
+	self.lessonEnglishAnswerLabel.text = [NSString stringWithFormat:@"%@*",[gameLessonsArray[userLesson][0] uppercaseString] ];
+	self.lessonEnglishCaseAnswerLabel.text = [NSString stringWithFormat:@"%@*",gameLessonsArray[userLesson][0] ];
 	
 	NSLog(@"- Game | Ready");
 	
 	[self templateReadyAnimate];
-	
 }
 
 # pragma mark Choices -
@@ -118,6 +118,9 @@ AVAudioPlayer *audioPlayerSounds;
 		[button setTitle: [lesson lessonContent:modeIsLanguage][i][1] forState: UIControlStateNormal];
         if(i == choiceSolution){
             [button setTitle:choiceSolutionString forState:UIControlStateNormal];
+			if( modeIsAnswer == 1 ){
+				[button setBackgroundColor:[UIColor colorWithRed:0.45 green:0.87 blue:0.76 alpha:1]];
+			}
 		}
 		else{
 			[button setTitle:choiceWrongString[i] forState:UIControlStateNormal];
@@ -240,6 +243,7 @@ AVAudioPlayer *audioPlayerSounds;
 	
 	NSLog(@"> User | Created");
 	userLesson = 0;
+	modeIsAnswer = 0;
 	modeIsCapitalized = 1;
 }
 
@@ -251,8 +255,10 @@ AVAudioPlayer *audioPlayerSounds;
 	
 	if( scrollView.tag == 801 ){
 		int previousMode = modeIsCapitalized;
-		if( option == 0 ){ modeIsCapitalized = 0; }
-		if( option == 1 ){ modeIsCapitalized = 1; }
+		if( option == 0 ){ modeIsCapitalized = 0; modeIsAnswer = 0; }
+		if( option == 1 ){ modeIsCapitalized = 1; modeIsAnswer = 0; }
+		if( option == 2 ){ modeIsCapitalized = 0; modeIsAnswer = 1; }
+		if( option == 3 ){ modeIsCapitalized = 1; modeIsAnswer = 1; }
 		if( previousMode != modeIsCapitalized ){ [self gameStart]; }
 	}
 	if( scrollView.tag == 802 ){
@@ -286,11 +292,12 @@ AVAudioPlayer *audioPlayerSounds;
 	// Case Selection View
 	
 	_mainOptionView.frame = CGRectMake(0, 0, screen.size.width, screen.size.height - (_choicesView.frame.size.height + screenMargin) );
-	_mainOptionView.contentSize = CGSizeMake(screen.size.width * 3, _mainOptionView.frame.size.height);
+	_mainOptionView.contentSize = CGSizeMake(screen.size.width * 4, _mainOptionView.frame.size.height);
 	
 	_lessonEnglishLabel.frame = CGRectMake(0, 0, screen.size.width, _mainOptionView.frame.size.height);
 	_lessonEnglishCaseLabel.frame = CGRectMake(screen.size.width, 0, screen.size.width, _mainOptionView.frame.size.height);
 	_lessonEnglishAnswerLabel.frame = CGRectMake(screen.size.width * 2, 0, screen.size.width, _mainOptionView.frame.size.height);
+	_lessonEnglishCaseAnswerLabel.frame = CGRectMake(screen.size.width * 3, 0, screen.size.width, _mainOptionView.frame.size.height);
 	
 	_feedbackView.frame = _mainOptionView.frame;
 	
