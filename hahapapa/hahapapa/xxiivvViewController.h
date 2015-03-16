@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface xxiivvViewController : UIViewController
+@interface xxiivvViewController : UIViewController<UIScrollViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIImageView *feedbackView;
 @property (strong, nonatomic) IBOutlet UIView *lessonView;

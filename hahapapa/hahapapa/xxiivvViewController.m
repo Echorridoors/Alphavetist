@@ -16,18 +16,19 @@
 
 AVAudioPlayer *audioPlayerSounds;
 
-@interface xxiivvViewController (){
+@interface xxiivvViewController(){
 	Template *template;
 	Lesson *lesson;
 }
 
 @end
 
-
 @implementation xxiivvViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+	[super viewDidLoad];
+	self.languageSelectionView.delegate = self;
+	self.mainOptionView.delegate = self;
 	[self start];
 }
 
@@ -53,7 +54,7 @@ AVAudioPlayer *audioPlayerSounds;
 -(void)gameStart {
 	
 	NSLog(@"- Game | Start");
-	
+	userLesson = 0;
 	[self gameChoicesRemove];
 	[self gamePrepare];
 }
@@ -68,9 +69,7 @@ AVAudioPlayer *audioPlayerSounds;
 }
 
 -(void)gameReady
-{
-    NSLog(@"%d",modeIsCapitalized);
-    
+{    
     if( modeIsCapitalized == 1 ){
         self.lessonEnglishLabel.text = gameLessonsArray[userLesson][0];
     }
@@ -248,10 +247,31 @@ AVAudioPlayer *audioPlayerSounds;
 	modeIsCapitalized = 1;
 }
 
+# pragma mark Interaction -
+
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+	int option = (int)(scrollView.contentOffset.x/screen.size.width);
+	
+	if( scrollView.tag == 801 ){
+		int previousMode = modeIsCapitalized;
+		if( option == 0 ){ modeIsCapitalized = 0; }
+		if( option == 1 ){ modeIsCapitalized = 1; }
+		if( previousMode != modeIsCapitalized ){ [self gameStart]; }
+	}
+	if( scrollView.tag == 802 ){
+		modeIsLanguage = option;
+		[self gameStart];
+	}
+	
+	NSLog(@"Option -> %d",option);
+	
+}
+
 # pragma mark Template -
 
--(void)templateStart {
-	
+-(void)templateStart
+{
 	screen = [[UIScreen mainScreen] bounds];
 	screenMargin = screen.size.width/8;
 	screenButtonWidth = (screen.size.width - (4*(screenMargin/2)))/3;
@@ -293,8 +313,6 @@ AVAudioPlayer *audioPlayerSounds;
 	// Generate Languages
 	
 	for(int i = 0; i < [[lesson lessonsList] count]; i++){
-		
-		NSLog(@"> %@",[[lesson lessonsList] objectAtIndex:i]);
 		
 		UILabel *languageLabel = [[UILabel alloc] init];
 		languageLabel.frame = CGRectMake(i * screen.size.width, 0, screen.size.width, screenMargin);
@@ -367,38 +385,6 @@ AVAudioPlayer *audioPlayerSounds;
 	NSLog(@"> Less | Start");
 	lesson = [[Lesson alloc] init];
 	gameLessonsArray = [lesson lessonContent:modeIsLanguage];
-}
-
-
-
-- (IBAction)lessonModeToggle:(id)sender
-{
-	NSLog(@"> Mode | Language Toggle");
-    
-    modeIsCapitalized = 0;
-    userLesson = 0;
-    modeIsLanguage = modeIsLanguage + 1;
-    
-    if( modeIsLanguage == [[lesson lessonsList] count] ){
-        modeIsLanguage = 0;
-    }
-    
-    [self gameStart];
-    [self gameStart];
-}
-
-- (IBAction)lessonCaseToggle:(id)sender
-{
-    NSLog(@"> Mode | Toggle Case");
-    
-    if( modeIsCapitalized == 1 ){
-        modeIsCapitalized = 0;
-    }
-    else{
-        modeIsCapitalized = 1;
-    }
-    
-    [self gameStart];
 }
 
 -(void)audioPlayerSounds:(NSString *)filename{

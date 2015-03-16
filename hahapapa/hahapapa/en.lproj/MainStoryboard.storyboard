@@ -26,7 +26,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     </view>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" id="UaZ-ed-cmQ" userLabel="mainOptionView">
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="801" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" id="UaZ-ed-cmQ" userLabel="mainOptionView">
                                         <rect key="frame" x="40" y="220" width="240" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
@@ -56,11 +56,17 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
+                                        <connections>
+                                            <outlet property="delegate" destination="2" id="Kyc-iZ-et2"/>
+                                        </connections>
                                     </scrollView>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" id="n8B-vY-pEU" userLabel="languageSelectionView">
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="802" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" id="n8B-vY-pEU" userLabel="languageSelectionView">
                                         <rect key="frame" x="40" y="220" width="240" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="2" id="MAr-Re-GKb"/>
+                                        </connections>
                                     </scrollView>
                                     <view contentMode="scaleToFill" id="RhR-uo-Zed" userLabel="lessonProgressView">
                                         <rect key="frame" x="80" y="137" width="160" height="41"/>
