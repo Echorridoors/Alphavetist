@@ -75,23 +75,6 @@
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" id="n8B-vY-pEU" userLabel="languageSelectionView">
                                         <rect key="frame" x="40" y="220" width="240" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Z9B-cy-WM7" userLabel="lessonPrevToggle">
-                                                <rect key="frame" x="83" y="42" width="73" height="44"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                <state key="normal">
-                                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <state key="highlighted">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="lessonModeToggle:" destination="2" eventType="touchUpInside" id="cL8-Za-KuC"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </scrollView>
                                     <view contentMode="scaleToFill" id="RhR-uo-Zed" userLabel="lessonProgressView">
@@ -122,7 +105,6 @@
                         <outlet property="lessonEnglishAnswerLabel" destination="aCH-h3-ftK" id="O1D-hL-1d8"/>
                         <outlet property="lessonEnglishCaseLabel" destination="o6n-Ci-Skz" id="oBa-eQ-ayD"/>
                         <outlet property="lessonEnglishLabel" destination="Pe1-uj-e7m" id="nfG-tf-yaL"/>
-                        <outlet property="lessonModeToggle" destination="Z9B-cy-WM7" id="7ud-nr-oPj"/>
                         <outlet property="lessonProgressBar" destination="EC1-Di-ExK" id="ue1-6O-KVl"/>
                         <outlet property="lessonProgressView" destination="RhR-uo-Zed" id="8Vs-MR-aGL"/>
                         <outlet property="lessonView" destination="shT-fH-IcR" id="kra-F3-Olr"/>

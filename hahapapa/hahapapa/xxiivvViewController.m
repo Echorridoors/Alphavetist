@@ -330,14 +330,6 @@ AVAudioPlayer *audioPlayerSounds;
 	
 	self.choicesView.frame = CGRectMake(0, screen.size.height-screen.size.width, screen.size.width, screen.size.width);
 	
-	self.lessonProgressView.frame = CGRectMake(screen.size.width/3, ((screen.size.height-screen.size.width)/2)+50, screen.size.width/3, 1);
-	self.lessonProgressView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
-	
-	self.lessonProgressBar.frame = CGRectMake(0, 0, 0, 1 );
-	self.lessonProgressBar.backgroundColor = [UIColor whiteColor];
-	
-	
-    self.lessonModeToggle.frame = CGRectMake(0, self.lessonProgressView.frame.origin.y, screen.size.width, screen.size.width/3/2);
 
     self.lessonCaseToggle.frame = CGRectMake(0, self.lessonProgressView.frame.origin.y - (screen.size.width/3), screen.size.width, screen.size.width/3);
     
@@ -357,6 +349,11 @@ AVAudioPlayer *audioPlayerSounds;
 
 	// Progress Bar View
 	_lessonProgressView.frame = CGRectMake(0, _languageSelectionView.frame.origin.y, screen.size.width, 1);
+	_lessonProgressView.frame = CGRectMake(screen.size.width/3, ((screen.size.height-screen.size.width)/2)+50, screen.size.width/3, 1);
+	_lessonProgressView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
+	
+	_lessonProgressBar.frame = CGRectMake(0, 0, 0, 1 );
+	_lessonProgressBar.backgroundColor = [UIColor whiteColor];
 	
 	// Generate Languages
 	
@@ -372,14 +369,6 @@ AVAudioPlayer *audioPlayerSounds;
 		
 		[_languageSelectionView addSubview:languageLabel];
 	}
-	
-	NSLog(@"%@",[lesson lessonsList]);
-	
-	
-	
-	_lessonCaseToggle.frame = CGRectMake(0, 0, 10, 10);
-	self.lessonCaseToggle.BackgroundColor = [UIColor blueColor];
-	
 }
 
 - (IBAction)lessonModeToggle:(id)sender
