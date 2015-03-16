@@ -16,7 +16,6 @@
 @property (strong, nonatomic) IBOutlet UIView *optionsView;
 @property (strong, nonatomic) IBOutlet UIView *lessonProgressView;
 @property (strong, nonatomic) IBOutlet UIImageView *lessonProgressBar;
-@property (weak, nonatomic) IBOutlet UIButton *lessonCaseToggle;
 @property (strong, nonatomic) IBOutlet UIView *optionSelector;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *mainOptionView;

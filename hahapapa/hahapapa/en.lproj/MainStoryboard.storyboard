@@ -26,14 +26,14 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="snF-xa-gQ0" userLabel="feedbackView">
-                                        <rect key="frame" x="40" y="220" width="240" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" id="UaZ-ed-cmQ" userLabel="mainOptionView">
                                         <rect key="frame" x="40" y="220" width="240" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="snF-xa-gQ0" userLabel="feedbackView">
+                                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="English" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.40000000000000002" id="Pe1-uj-e7m" userLabel="lessonEnglishLabel">
                                                 <rect key="frame" x="-23" y="54" width="286" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -55,21 +55,6 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ajf-bX-dd5" userLabel="lessonCaseToggle">
-                                                <rect key="frame" x="83" y="42" width="73" height="44"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                <state key="normal">
-                                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <state key="highlighted">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="lessonCaseToggle:" destination="2" eventType="touchUpInside" id="pLc-D3-EL6"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                     </scrollView>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" id="n8B-vY-pEU" userLabel="languageSelectionView">
@@ -101,7 +86,6 @@
                         <outlet property="choicesView" destination="xOX-9M-vBs" id="KDj-ST-Ynu"/>
                         <outlet property="feedbackView" destination="snF-xa-gQ0" id="lOL-Je-gmJ"/>
                         <outlet property="languageSelectionView" destination="n8B-vY-pEU" id="L9z-rl-vSs"/>
-                        <outlet property="lessonCaseToggle" destination="ajf-bX-dd5" id="Qfi-se-7Tb"/>
                         <outlet property="lessonEnglishAnswerLabel" destination="aCH-h3-ftK" id="O1D-hL-1d8"/>
                         <outlet property="lessonEnglishCaseLabel" destination="o6n-Ci-Skz" id="oBa-eQ-ayD"/>
                         <outlet property="lessonEnglishLabel" destination="Pe1-uj-e7m" id="nfG-tf-yaL"/>
