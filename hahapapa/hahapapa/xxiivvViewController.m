@@ -40,6 +40,8 @@ AVAudioPlayer *audioPlayerSounds;
 -(void)start
 {
     modeIsLanguage = 0;
+	modeIsAnswer = 0;
+	modeIsCapitalized = 0;
     
 	[self lessonStart];
 	[self templateStart];
@@ -244,7 +246,7 @@ AVAudioPlayer *audioPlayerSounds;
 	NSLog(@"> User | Created");
 	userLesson = 0;
 	modeIsAnswer = 0;
-	modeIsCapitalized = 1;
+	modeIsCapitalized = 0;
 }
 
 # pragma mark Interaction -
