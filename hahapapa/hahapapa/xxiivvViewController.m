@@ -77,17 +77,6 @@ AVAudioPlayer *audioPlayerSounds;
     else{
         self.lessonEnglishLabel.text = [gameLessonsArray[userLesson][0] capitalizedString];
     }
-    
-    self.lessonTypeLabel.text = [[lesson lessonsList] objectAtIndex:modeIsLanguage];
-    
-    if( [[[lesson lessonsList] objectAtIndex:modeIsLanguage] isEqualToString:@"Japanese"] && modeIsCapitalized == 1 ){
-        self.lessonTypeLabel.text = @"Japanese Katakana";
-    }
-    
-    if( [[[lesson lessonsList] objectAtIndex:modeIsLanguage] isEqualToString:@"Japanese"] && modeIsCapitalized == 0 ){
-        self.lessonTypeLabel.text = @"Japanese Hiragana";
-    }
-    
 	
 	NSLog(@"- Game | Ready");
 	
@@ -123,12 +112,13 @@ AVAudioPlayer *audioPlayerSounds;
 		button.alpha = 0;
 		[button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 		
-		
+		/* TODO
 		if( [self.lessonTypeLabel.text isEqualToString:@"Morse"] ){
 			button.titleLabel.adjustsFontSizeToFitWidth = TRUE;
 			[button.titleLabel setMinimumScaleFactor:0.5];
 			[button.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:40]];
 		}
+		*/
 		
 		[button setTitle: [lesson lessonContent:modeIsLanguage][i][1] forState: UIControlStateNormal];
         if(i == choiceSolution){
@@ -269,16 +259,11 @@ AVAudioPlayer *audioPlayerSounds;
 	
 	self.lessonEnglishLabel.alpha = 0;
     
-    self.lessonTypeLabel.frame = CGRectMake(0, self.lessonProgressView.frame.origin.y-10, screen.size.width, screen.size.width/3/2);
-    self.lessonTypeLabel.alpha = 0;
-    
 	[UIView beginAnimations:nil context:nil];
 	[UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
 	[UIView setAnimationDuration:0.5];
 	self.lessonEnglishLabel.alpha = 1;
     self.lessonProgressBar.frame = CGRectMake(0, 0, (self.lessonProgressView.frame.size.width)*(barCurrentLesson/barMaxLesson), 1 );
-    self.lessonTypeLabel.frame = CGRectMake(0, self.lessonProgressView.frame.origin.y+1, screen.size.width, screen.size.width/3/2);
-    self.lessonTypeLabel.alpha = 1;
 	[UIView commitAnimations];
 	
 	// Animate button fade
@@ -342,9 +327,6 @@ AVAudioPlayer *audioPlayerSounds;
 	self.lessonView.frame = [template lessonViewFrame];
 	self.lessonView.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1];
 	
-	self.lessonEnglishLabel.frame = CGRectMake(0, ((screen.size.height-screen.size.width)/2)-50, screen.size.width, 100);
-	self.lessonEnglishLabel.textColor = [UIColor colorWithWhite:0.1 alpha:1];
-	self.lessonEnglishLabel.text = @"na";
 	
 	self.choicesView.frame = CGRectMake(0, screen.size.height-screen.size.width, screen.size.width, screen.size.width);
 	
@@ -354,14 +336,50 @@ AVAudioPlayer *audioPlayerSounds;
 	self.lessonProgressBar.frame = CGRectMake(0, 0, 0, 1 );
 	self.lessonProgressBar.backgroundColor = [UIColor whiteColor];
 	
-	self.lessonTypeLabel.textColor = [UIColor colorWithWhite:1 alpha:1];
-	self.lessonTypeLabel.frame = CGRectMake(0, self.lessonProgressView.frame.origin.y+1, screen.size.width, screen.size.width/3/2);
 	
     self.lessonModeToggle.frame = CGRectMake(0, self.lessonProgressView.frame.origin.y, screen.size.width, screen.size.width/3/2);
-    
+
     self.lessonCaseToggle.frame = CGRectMake(0, self.lessonProgressView.frame.origin.y - (screen.size.width/3), screen.size.width, screen.size.width/3);
     
 	self.feedbackView.frame = CGRectMake(0, 0, screen.size.width, screen.size.height-screen.size.width);
+	
+	// Case Selection View
+	_mainOptionView.frame = CGRectMake(0, 0, screen.size.width, screen.size.height - (_choicesView.frame.size.height + screenMargin) );
+	_mainOptionView.contentSize = CGSizeMake(screen.size.width * 3, _mainOptionView.frame.size.height);
+	
+	_lessonEnglishLabel.frame = CGRectMake(0, 0, screen.size.width, _mainOptionView.frame.size.height);
+	_lessonEnglishCaseLabel.frame = CGRectMake(screen.size.width, 0, screen.size.width, _mainOptionView.frame.size.height);
+	_lessonEnglishAnswerLabel.frame = CGRectMake(screen.size.width * 2, 0, screen.size.width, _mainOptionView.frame.size.height);
+	
+	// Language Selection View
+	_languageSelectionView.frame = CGRectMake(0, _choicesView.frame.origin.y - screenMargin, screen.size.width, screenMargin);
+	_languageSelectionView.contentSize = CGSizeMake(screen.size.width * [[lesson lessonsList] count], _languageSelectionView.frame.size.height);
+
+	// Progress Bar View
+	_lessonProgressView.frame = CGRectMake(0, _languageSelectionView.frame.origin.y, screen.size.width, 1);
+	
+	// Generate Languages
+	
+	for(int i = 0; i < [[lesson lessonsList] count]; i++){
+		
+		NSLog(@"> %@",[[lesson lessonsList] objectAtIndex:i]);
+		
+		UILabel *languageLabel = [[UILabel alloc] init];
+		languageLabel.frame = CGRectMake(i * screen.size.width, 0, screen.size.width, screenMargin);
+		languageLabel.text = [[lesson lessonsList] objectAtIndex:i];
+		languageLabel.font = [UIFont fontWithName:@"AppleSDGothicNeo-Regular" size:16];
+		languageLabel.textAlignment = NSTextAlignmentCenter;
+		
+		[_languageSelectionView addSubview:languageLabel];
+	}
+	
+	NSLog(@"%@",[lesson lessonsList]);
+	
+	
+	
+	_lessonCaseToggle.frame = CGRectMake(0, 0, 10, 10);
+	self.lessonCaseToggle.BackgroundColor = [UIColor blueColor];
+	
 }
 
 - (IBAction)lessonModeToggle:(id)sender
