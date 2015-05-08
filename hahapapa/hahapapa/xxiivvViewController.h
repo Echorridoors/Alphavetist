@@ -26,9 +26,6 @@
 
 @property (weak, nonatomic) IBOutlet UIScrollView *languageSelectionView;
 
-- (IBAction)lessonModeToggle:(id)sender;
-- (IBAction)lessonCaseToggle:(id)sender;
-
 @end
 
 CGRect screen;

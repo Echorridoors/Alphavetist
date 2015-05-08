@@ -47,14 +47,13 @@ AVAudioPlayer *audioPlayerSounds;
 	[self templateStart];
 
 	[self userStart];
-	[self userLoad];
 	[self gameStart];
 }
 
 # pragma mark Game States -
 
--(void)gameStart {
-	
+-(void)gameStart
+{
 	NSLog(@"- Game | Start");
 	[self gameChoicesRemove];
 	[self gamePrepare];
@@ -162,8 +161,6 @@ AVAudioPlayer *audioPlayerSounds;
 		userLesson += 1;
 	}
 	
-	[self userSave];
-	
 	[self templateChoiceCorrectAnimation];
 	
 	NSLog(@"> Game | Start Lesson: %d", userLesson);
@@ -200,7 +197,7 @@ AVAudioPlayer *audioPlayerSounds;
     
     [randSequence1 removeObjectIdenticalTo:answer];
     
-    for ( uint i1 = [randSequence1 count] - 1; i1 > 0; --i1){
+    for ( long i1 = [randSequence1 count] - 1; i1 > 0; --i1){
         int from = arc4random() % [randSequence1 count];
         int to = arc4random() % [randSequence1 count];
         [randSequence1 exchangeObjectAtIndex:from withObjectAtIndex:to];
@@ -261,10 +258,14 @@ AVAudioPlayer *audioPlayerSounds;
 		if( option == 1 ){ modeIsCapitalized = 1; modeIsAnswer = 0; }
 		if( option == 2 ){ modeIsCapitalized = 0; modeIsAnswer = 1; }
 		if( option == 3 ){ modeIsCapitalized = 1; modeIsAnswer = 1; }
-		if( previousMode != modeIsCapitalized ){ [self gameStart]; }
+		if( previousMode != modeIsCapitalized ){
+			[self lessonStart];
+			[self gameStart];
+		}
 	}
 	if( scrollView.tag == 802 ){
 		modeIsLanguage = option;
+		[self userStart];
 		[self gameStart];
 		[self gameStart];
 	}
@@ -293,7 +294,7 @@ AVAudioPlayer *audioPlayerSounds;
 	
 	// Case Selection View
 	
-	_mainOptionView.frame = CGRectMake(0, 0, screen.size.width, screen.size.height - (_choicesView.frame.size.height + screenMargin) );
+	_mainOptionView.frame = CGRectMake(0, 0, screen.size.width, ((screen.size.height - _choicesView.frame.size.height)/3)*2 );
 	_mainOptionView.contentSize = CGSizeMake(screen.size.width * 4, _mainOptionView.frame.size.height);
 	
 	_lessonEnglishLabel.frame = CGRectMake(0, 0, screen.size.width, _mainOptionView.frame.size.height);
@@ -305,15 +306,16 @@ AVAudioPlayer *audioPlayerSounds;
 	
 	// Language Selection View
 	
-	_languageSelectionView.frame = CGRectMake(0, _choicesView.frame.origin.y - screenMargin, screen.size.width, screenMargin);
+	_languageSelectionView.frame = CGRectMake(0, _mainOptionView.frame.size.height, screen.size.width, ( screen.size.height - _mainOptionView.frame.size.height - _choicesView.frame.size.height ) );
 	_languageSelectionView.contentSize = CGSizeMake(screen.size.width * [[lesson lessonsList] count], _languageSelectionView.frame.size.height);
 	
 	// Progress Bar View
 	
-	_lessonProgressView.frame = CGRectMake(0, _languageSelectionView.frame.origin.y, screen.size.width, 1);
+	_lessonProgressView.frame = CGRectMake((screen.size.width/2)-(screenMargin*1.5), _mainOptionView.frame.size.height - screenMargin/8, screenMargin*3, 1 );
 	_lessonProgressView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
+	_lessonProgressView.clipsToBounds = YES;
 	
-	_lessonProgressBar.frame = CGRectMake(0, 0, 0, 1 );
+	_lessonProgressBar.frame = CGRectMake(0, 0, 1, 1 );
 	_lessonProgressBar.backgroundColor = [UIColor whiteColor];
 	
 	// Generate Languages
@@ -321,7 +323,7 @@ AVAudioPlayer *audioPlayerSounds;
 	for(int i = 0; i < [[lesson lessonsList] count]; i++){
 		
 		UILabel *languageLabel = [[UILabel alloc] init];
-		languageLabel.frame = CGRectMake(i * screen.size.width, 0, screen.size.width, screenMargin);
+		languageLabel.frame = CGRectMake(i * screen.size.width, 0, screen.size.width, _languageSelectionView.frame.size.height);
 		languageLabel.text = [[lesson lessonsList] objectAtIndex:i];
 		languageLabel.font = [UIFont fontWithName:@"AppleSDGothicNeo-Regular" size:16];
 		languageLabel.textAlignment = NSTextAlignmentCenter;
@@ -343,7 +345,7 @@ AVAudioPlayer *audioPlayerSounds;
 	[UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
 	[UIView setAnimationDuration:0.5];
 	self.lessonEnglishLabel.alpha = 1;
-    self.lessonProgressBar.frame = CGRectMake(0, 0, (self.lessonProgressView.frame.size.width)*(barCurrentLesson/barMaxLesson), 1 );
+	self.lessonProgressBar.frame = CGRectMake(0, 0, self.lessonProgressView.frame.size.width*(barCurrentLesson/barMaxLesson), 1 );
 	[UIView commitAnimations];
 	
 	// Animate button fade
@@ -412,28 +414,6 @@ AVAudioPlayer *audioPlayerSounds;
 		[audioPlayerSounds prepareToPlay];
 		[audioPlayerSounds play];
 	}
-}
-
--(void)userLoad
-{
-	if( [[[NSUserDefaults standardUserDefaults] objectForKey:@"userLesson"] intValue] > 0 ){
-		
-		NSLog(@"= User  | Loading..");
-
-		userLesson	= [[[NSUserDefaults standardUserDefaults] objectForKey:@"userLesson"] intValue];
-		
-		NSLog(@"= User  | Loaded.");
-	}
-}
-
--(void)userSave{
-	
-	NSLog(@"= User  | Saving..");
-
-	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:userLesson] forKey:@"userLesson"];
-	[[NSUserDefaults standardUserDefaults] synchronize];
-	
-	NSLog(@"= User  | Saved.");
 }
 
 - (BOOL)prefersStatusBarHidden
