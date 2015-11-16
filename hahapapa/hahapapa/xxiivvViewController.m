@@ -354,7 +354,7 @@ AVAudioPlayer *audioPlayerSounds;
 		[UIView beginAnimations:nil context:nil];
 		[UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
 		[UIView setAnimationDelay:i*0.1];
-		[UIView setAnimationDuration:0.3];
+		[UIView setAnimationDuration:0.];
 		subview.alpha = 1;
 		[UIView commitAnimations];
 		i+=1;

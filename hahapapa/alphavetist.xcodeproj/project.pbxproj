@@ -202,7 +202,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = xxiivv;
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = XXIIVV;
 				TargetAttributes = {
 					03D07C8C17BD085100DE4475 = {
@@ -303,6 +303,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -361,6 +362,7 @@
 				GCC_PREFIX_HEADER = "hahapapa/alphavetist-Prefix.pch";
 				INFOPLIST_FILE = "hahapapa/alphavetist-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xxiivv.hahapapa;
 				PRODUCT_NAME = alphavetist;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -379,6 +381,7 @@
 				GCC_PREFIX_HEADER = "hahapapa/alphavetist-Prefix.pch";
 				INFOPLIST_FILE = "hahapapa/alphavetist-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xxiivv.hahapapa;
 				PRODUCT_NAME = alphavetist;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
